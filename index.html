@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#082b75">
+<title>FlowPay — цифровой кошелёк</title>
+<style>
+:root{--navy:#082b75;--blue:#1266e8;--cyan:#19a6df;--ink:#10264b;--muted:#71809a;--line:#e7edf5;--bg:#f4f7fb;--white:#fff;--green:#138a58;--shadow:0 12px 34px rgba(15,42,86,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,24px);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:850;letter-spacing:-.8px;color:var(--navy)}.brandmark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;font-weight:900;font-size:20px;box-shadow:0 5px 12px #1266e833}.top-right{display:flex;align-items:center;gap:18px}.help{color:#536580;text-decoration:none;font-size:14px}.avatar{width:38px;height:38px;border-radius:50%;background:#e5efff;color:var(--navy);display:grid;place-items:center;font-weight:800}.layout{max-width:1160px;margin:34px auto;padding:0 24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:30px}.sidebar{display:flex;flex-direction:column;gap:7px}.side-link{border:0;background:transparent;text-align:left;padding:13px 15px;border-radius:12px;color:#52637e;font-weight:650;display:flex;gap:12px;align-items:center}.side-link.active,.side-link:hover{background:#e8f1ff;color:var(--blue)}.side-link .ico{font-size:18px;width:22px;text-align:center}.side-note{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--muted);font-size:12px;line-height:1.5}.content{min-width:0}.welcome{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}.welcome h1{font-size:28px;margin:0 0 7px;letter-spacing:-.8px}.welcome p{margin:0;color:var(--muted);font-size:14px}.date{color:var(--muted);font-size:13px}.balance-card{background:linear-gradient(115deg,#082b75 0%,#1055bd 58%,#148ed0 100%);border-radius:23px;padding:27px 30px;color:white;box-shadow:0 18px 38px #0c4b9b30;position:relative;overflow:hidden}.balance-card:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff20;border-radius:50%;right:-65px;top:-130px;box-shadow:0 0 0 30px #ffffff08,0 0 0 65px #ffffff06}.balance-label{font-size:13px;color:#d4e5ff;display:flex;align-items:center;gap:9px}.eye{border:0;background:#ffffff20;color:#fff;border-radius:20px;padding:4px 9px;font-size:12px}.amount{font-size:38px;font-weight:800;letter-spacing:-1.5px;margin:13px 0 5px}.subamount{font-size:12px;color:#d4e5ff}.balance-actions{display:flex;gap:10px;margin-top:23px;position:relative;z-index:1}.btn{border:0;border-radius:11px;padding:11px 17px;font-weight:750;font-size:13px}.btn.white{background:white;color:var(--navy)}.btn.glass{background:#ffffff20;color:white;border:1px solid #ffffff40}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0 26px}.quick button{background:white;border:1px solid var(--line);border-radius:16px;padding:17px 10px;box-shadow:0 5px 16px #163c7007;color:var(--ink);font-weight:700;font-size:12px}.quick .round{width:38px;height:38px;margin:0 auto 9px;border-radius:13px;background:#eaf2ff;color:var(--blue);display:grid;place-items:center;font-size:19px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 13px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.3px}.link{border:0;background:none;color:var(--blue);font-weight:700;font-size:12px}.panel{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 20px #163c7006}.activity{padding:5px 20px}.transaction{display:flex;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid #eff2f7}.transaction:last-child{border-bottom:0}.tx-icon{width:42px;height:42px;border-radius:14px;background:#f0f5fc;display:grid;place-items:center;font-size:18px}.tx-main{flex:1;min-width:0}.tx-title{font-weight:750;font-size:13px;margin-bottom:4px}.tx-date{font-size:11px;color:var(--muted)}.tx-amount{font-size:13px;font-weight:800;text-align:right}.positive{color:var(--green)}.negative{color:var(--ink)}.lower{display:grid;grid-template-columns:1.15fr .85fr;gap:15px;margin-top:20px}.small-panel{padding:19px}.small-panel h3{margin:0 0 14px;font-size:15px}.method{display:flex;align-items:center;gap:12px}.card-chip{width:48px;height:32px;border-radius:7px;background:linear-gradient(135deg,#152e59,#3877bd);position:relative}.card-chip:after{content:"";position:absolute;right:7px;top:9px;width:12px;height:12px;border:2px solid #ffffff90;border-radius:50%}.method-info{font-size:12px;font-weight:750}.method-info span{display:block;color:var(--muted);font-weight:500;margin-top:4px}.status{margin-left:auto;font-size:10px;color:var(--green);background:#e9f8f1;padding:5px 8px;border-radius:20px}.security{font-size:12px;line-height:1.55;color:var(--muted)}.security strong{display:block;color:var(--ink);font-size:13px;margin-bottom:5px}.mobile-nav{display:none}.modal-backdrop{position:fixed;inset:0;background:#071a38a8;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:20px;padding:24px;width:min(420px,100%);box-shadow:0 20px 60px #00153640}.modal h2{margin:0 0 7px;font-size:20px}.modal p{margin:0 0 18px;color:var(--muted);font-size:13px}.field{display:block;margin:13px 0}.field span{display:block;font-size:12px;font-weight:700;margin-bottom:7px}.field input{width:100%;padding:13px;border:1px solid #dce4ef;border-radius:10px;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1266e81a}.modal-actions{display:flex;gap:9px;margin-top:18px}.modal-actions button{flex:1}.btn.primary{background:var(--blue);color:#fff}.btn.cancel{background:#eef2f7;color:#52637e}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;background:#10264b;color:#fff;padding:12px 17px;border-radius:12px;font-size:13px;transition:.25s;z-index:20;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.disclaimer{text-align:center;color:#9aa6b8;font-size:10px;margin:24px 0 5px}
+@media(max-width:760px){.topbar{height:64px;padding:0 18px}.help{display:none}.layout{display:block;margin:25px auto 95px;padding:0 16px}.sidebar{display:none}.welcome h1{font-size:24px}.date{display:none}.balance-card{padding:23px;border-radius:20px}.amount{font-size:34px}.quick{gap:8px}.quick button{padding:13px 5px;font-size:11px}.quick .round{width:36px;height:36px}.lower{grid-template-columns:1fr}.mobile-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#fff;border-top:1px solid var(--line);padding:9px 5px calc(9px + env(safe-area-inset-bottom));z-index:6}.mobile-nav button{border:0;background:none;color:#8290a6;font-size:10px;font-weight:700;display:grid;gap:4px;justify-items:center}.mobile-nav button span{font-size:19px}.mobile-nav button.active{color:var(--blue)}.activity{padding:4px 14px}.tx-title{font-size:12px}.tx-amount{font-size:12px}.welcome{margin-bottom:17px}.disclaimer{margin-bottom:15px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brandmark">F</div>flowpay</div>
+  <div class="top-right"><a class="help" href="#" onclick="notify('Демо-интерфейс: платежи не выполняются');return false">Помощь</a><div class="avatar">А</div></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <button class="side-link active" data-section="Главная"><span class="ico">⌂</span>Главная</button>
+    <button class="side-link" data-section="Кошелёк"><span class="ico">▣</span>Кошелёк</button>
+    <button class="side-link" data-section="История"><span class="ico">↔</span>История операций</button>
+    <button class="side-link" data-section="Платежи"><span class="ico">＋</span>Платежи</button>
+    <button class="side-link" data-section="Настройки"><span class="ico">⚙</span>Настройки</button>
+    <div class="side-note">Ваш цифровой кошелёк в одном месте.<br><br><b>Демонстрационный режим</b><br>Операции здесь не являются реальными платежами.</div>
+  </aside>
+  <main class="content">
+    <div class="welcome"><div><h1>Добро пожаловать, Алексей</h1><p>Вот обзор вашего кошелька</p></div><div class="date" id="today"></div></div>
+    <section class="balance-card">
+      <div class="balance-label">Общий баланс <button class="eye" id="toggleBalance">Скрыть</button></div>
+      <div class="amount" id="balance">₽ 24 580,00</div>
+      <div class="subamount">Доступно на вашем демо-счёте</div>
+      <div class="balance-actions"><button class="btn white" onclick="openModal('send')">↗ Отправить</button><button class="btn glass" onclick="openModal('request')">↓ Запросить</button></div>
+    </section>
+    <section class="quick">
+      <button onclick="openModal('send')"><div class="round">↗</div>Отправить</button>
+      <button onclick="openModal('request')"><div class="round">⇩</div>Запросить</button>
+      <button onclick="notify('Добавление карты доступно в демо-версии')"><div class="round">▤</div>Добавить карту</button>
+      <button onclick="notify('Раздел платежей в демо-режиме')"><div class="round">＋</div>Ещё</button>
+    </section>
+    <div class="section-head"><h2>Последние операции</h2><button class="link" onclick="notify('Показаны последние демо-операции')">Все операции →</button></div>
+    <section class="panel activity" id="activity">
+      <div class="transaction"><div class="tx-icon">🛍️</div><div class="tx-main"><div class="tx-title">Покупка в Market Place</div><div class="tx-date">Сегодня · 14:32</div></div><div class="tx-amount negative">− ₽ 1 250,00</div></div>
+      <div class="transaction"><div class="tx-icon">↙</div><div class="tx-main"><div class="tx-title">Получение от Марии</div><div class="tx-date">Вчера · 18:06</div></div><div class="tx-amount positive">+ ₽ 3 500,00</div></div>
+      <div class="transaction"><div class="tx-icon">☕</div><div class="tx-main"><div class="tx-title">Coffee &amp; Bakery</div><div class="tx-date">9 ноября · 09:41</div></div><div class="tx-amount negative">− ₽ 420,00</div></div>
+      <div class="transaction"><div class="tx-icon">↙</div><div class="tx-main"><div class="tx-title">Возврат средств</div><div class="tx-date">7 ноября · 16:20</div></div><div class="tx-amount positive">+ ₽ 890,00</div></div>
+    </section>
+    <div class="lower">
+      <section class="panel small-panel"><h3>Способы оплаты</h3><div class="method"><div class="card-chip"></div><div class="method-info">••••  ••••  ••••  4821<span>Visa · Основная карта</span></div><div class="status">Активна</div></div></section>
+      <section class="panel small-panel"><h3>Ваш аккаунт</h3><div class="security"><strong>Защита и конфиденциальность</strong>Настройки безопасности и данные профиля находятся под вашим контролем.</div></section>
+    </div>
+    <div class="disclaimer">FLOWPAY DEMO · Не является банковским или платёжным сервисом. Все данные и операции демонстрационные.</div>
+  </main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-section="Главная"><span>⌂</span>Главная</button>
+  <button data-section="Кошелёк"><span>▣</span>Кошелёк</button>
+  <button data-section="Платежи"><span>↗</span>Платежи</button>
+  <button data-section="История"><span>↔</span>История</button>
+  <button data-section="Настройки"><span>⚙</span>Профиль</button>
+</nav>
+<div class="modal-backdrop" id="modalBackdrop" onclick="if(event.target===this)closeModal()">
+  <div class="modal"><h2 id="modalTitle">Отправить средства</h2><p id="modalDescription">Демонстрация интерфейса. Реальный перевод не выполняется.</p>
+    <label class="field"><span id="recipientLabel">Получатель</span><input id="recipient" placeholder="Имя или email"></label>
+    <label class="field"><span>Сумма (₽)</span><input id="sum" type="number" min="1" placeholder="0.00"></label>
+    <div class="modal-actions"><button class="btn cancel" onclick="closeModal()">Отмена</button><button class="btn primary" onclick="submitDemo()">Продолжить</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+let hidden=false, modalMode='send', toastTimer;
+$('#today').textContent=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric'}).format(new Date());
+$('#toggleBalance').addEventListener('click',()=>{hidden=!hidden;$('#balance').textContent=hidden?'••••••••':'₽ 24 580,00';$('#toggleBalance').textContent=hidden?'Показать':'Скрыть'});
+function notify(message){const t=$('#toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+function openModal(mode){modalMode=mode;$('#modalTitle').textContent=mode==='send'?'Отправить средства':'Запросить средства';$('#modalDescription').textContent='Демонстрация интерфейса. Реальная операция не выполняется.';$('#recipientLabel').textContent=mode==='send'?'Получатель':'У кого запросить';$('#recipient').value='';$('#sum').value='';$('#modalBackdrop').classList.add('show')}
+function closeModal(){$('#modalBackdrop').classList.remove('show')}
+function submitDemo(){const person=$('#recipient').value.trim(),sum=Number($('#sum').value);if(!person||!Number.isFinite(sum)||sum<=0){notify('Заполните получателя и корректную сумму');return}closeModal();notify(modalMode==='send'?'Демо-перевод подготовлен':'Демо-запрос подготовлен')}
+document.querySelectorAll('[data-section]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-section]').forEach(b=>b.classList.remove('active'));document.querySelectorAll(`[data-section="${btn.dataset.section}"]`).forEach(b=>b.classList.add('active'));if(btn.dataset.section!=='Главная')notify('Раздел «'+btn.dataset.section+'» — демонстрационный экран')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
