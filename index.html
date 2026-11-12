@@ -274,8 +274,11 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 .history-status { display: none !important; }html, body { max-width: 100%; overflow-x: hidden; }
 [data-view="Home"] .quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
 @media (max-width: 600px) {  
-  div:has(> .demo-bank-card) { display: flex !important; overflow-x: auto !important; gap: 12px !important; padding-bottom: 4px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+   div:has(> .demo-bank-card) { display: flex !important; overflow-x: auto !important; gap: 14px !important; scroll-snap-type: x mandatory !important; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   div:has(> .demo-bank-card)::-webkit-scrollbar { display: none; }
+  .demo-bank-card { flex: 0 0 100% !important; width: 100% !important; min-width: 100% !important; aspect-ratio: 1.586 / 1; scroll-snap-align: center !important; scroll-snap-stop: always; }
+  .demo-card-number { white-space: nowrap !important; font-size: 16px !important; }
+
 
   .profile-card { padding: 16px 14px !important; gap: 10px !important; padding-right: 105px !important; }
   .profile-card > span { top: 14px !important; right: 12px !important; padding: 2px 7px !important; font-size: 10px !important; }
@@ -283,9 +286,7 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   .avatar-large { width: 42px !important; height: 42px !important; flex-shrink: 0 !important;}
                   .cards-grid, .cards-row { display: flex !important; overflow-x: auto !important; gap: 12px !important; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .cards-grid::-webkit-scrollbar, .cards-row::-webkit-scrollbar { display: none; }
-  .demo-bank-card { flex: 0 0 84% !important; min-width: 265px !important; aspect-ratio: 1.586 / 1; scroll-snap-align: start; }
-  .demo-card-number { white-space: nowrap !important; font-size: 15px !important; }
-}
+  
 }
 
 
@@ -624,6 +625,34 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
       balance.textContent = visible ? '$24,580.00' : '••••••••';
     });
   }
+    const cardTrack = document.querySelector('div:has(> .demo-bank-card)');
+  const cards = cardTrack ? cardTrack.querySelectorAll('.demo-bank-card') : [];
+  if (cardTrack && cards.length > 1 && window.innerWidth <= 600) {
+    const dotsWrap = document.createElement('div');
+    dotsWrap.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:6px;margin-top:10px;';
+    const dots = Array.from(cards).map((card, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.style.cssText = i === 0
+        ? 'width:18px;height:6px;border-radius:99px;border:0;background:#0870e8;padding:0;transition:all .25s;'
+        : 'width:6px;height:6px;border-radius:99px;border:0;background:#cbd5e1;padding:0;transition:all .25s;';
+      dot.addEventListener('click', () => {
+        cardTrack.scrollTo({ left: card.offsetLeft - cardTrack.offsetLeft, behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    cardTrack.parentNode.insertBefore(dotsWrap, cardTrack.nextSibling);
+
+    cardTrack.addEventListener('scroll', () => {
+      const activeIdx = Math.round(cardTrack.scrollLeft / cardTrack.clientWidth);
+      dots.forEach((d, idx) => {
+        d.style.width = idx === activeIdx ? '18px' : '6px';
+        d.style.background = idx === activeIdx ? '#0870e8' : '#cbd5e1';
+      });
+    }, { passive: true });
+  }
+
 })();
 </script>
 
