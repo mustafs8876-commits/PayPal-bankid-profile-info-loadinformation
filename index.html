@@ -1,85 +1,700 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#082b75">
+<meta name="theme-color" content="#ffffff">
 <title>PayPal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
 <style>
-:root{--navy:#082b75;--blue:#1266e8;--cyan:#19a6df;--ink:#10264b;--muted:#71809a;--line:#e7edf5;--bg:#f4f7fb;--white:#fff;--green:#138a58;--shadow:0 12px 34px rgba(15,42,86,.08)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,24px);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:850;letter-spacing:-.8px;color:var(--navy)}.brandmark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;font-weight:900;font-size:20px;box-shadow:0 5px 12px #1266e833}.top-right{display:flex;align-items:center;gap:18px}.help{color:#536580;text-decoration:none;font-size:14px}.avatar{width:38px;height:38px;border-radius:50%;background:#e5efff;color:var(--navy);display:grid;place-items:center;font-weight:800}.layout{max-width:1160px;margin:34px auto;padding:0 24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:30px}.sidebar{display:flex;flex-direction:column;gap:7px}.side-link{border:0;background:transparent;text-align:left;padding:13px 15px;border-radius:12px;color:#52637e;font-weight:650;display:flex;gap:12px;align-items:center}.side-link.active,.side-link:hover{background:#e8f1ff;color:var(--blue)}.side-link .ico{font-size:18px;width:22px;text-align:center}.side-note{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--muted);font-size:12px;line-height:1.5}.content{min-width:0}.welcome{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}.welcome h1{font-size:28px;margin:0 0 7px;letter-spacing:-.8px}.welcome p{margin:0;color:var(--muted);font-size:14px}.date{color:var(--muted);font-size:13px}.balance-card{background:linear-gradient(115deg,#082b75 0%,#1055bd 58%,#148ed0 100%);border-radius:23px;padding:27px 30px;color:white;box-shadow:0 18px 38px #0c4b9b30;position:relative;overflow:hidden}.balance-card:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff20;border-radius:50%;right:-65px;top:-130px;box-shadow:0 0 0 30px #ffffff08,0 0 0 65px #ffffff06}.balance-label{font-size:13px;color:#d4e5ff;display:flex;align-items:center;gap:9px}.eye{border:0;background:#ffffff20;color:#fff;border-radius:20px;padding:4px 9px;font-size:12px}.amount{font-size:38px;font-weight:800;letter-spacing:-1.5px;margin:13px 0 5px}.subamount{font-size:12px;color:#d4e5ff}.balance-actions{display:flex;gap:10px;margin-top:23px;position:relative;z-index:1}.btn{border:0;border-radius:11px;padding:11px 17px;font-weight:750;font-size:13px}.btn.white{background:white;color:var(--navy)}.btn.glass{background:#ffffff20;color:white;border:1px solid #ffffff40}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0 26px}.quick button{background:white;border:1px solid var(--line);border-radius:16px;padding:17px 10px;box-shadow:0 5px 16px #163c7007;color:var(--ink);font-weight:700;font-size:12px}.quick .round{width:38px;height:38px;margin:0 auto 9px;border-radius:13px;background:#eaf2ff;color:var(--blue);display:grid;place-items:center;font-size:19px}.section-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 13px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.3px}.link{border:0;background:none;color:var(--blue);font-weight:700;font-size:12px}.panel{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 20px #163c7006}.activity{padding:5px 20px}.transaction{display:flex;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid #eff2f7}.transaction:last-child{border-bottom:0}.tx-icon{width:42px;height:42px;border-radius:14px;background:#f0f5fc;display:grid;place-items:center;font-size:18px}.tx-main{flex:1;min-width:0}.tx-title{font-weight:750;font-size:13px;margin-bottom:4px}.tx-date{font-size:11px;color:var(--muted)}.tx-amount{font-size:13px;font-weight:800;text-align:right}.positive{color:var(--green)}.negative{color:var(--ink)}.lower{display:grid;grid-template-columns:1.15fr .85fr;gap:15px;margin-top:20px}.small-panel{padding:19px}.small-panel h3{margin:0 0 14px;font-size:15px}.method{display:flex;align-items:center;gap:12px}.card-chip{width:48px;height:32px;border-radius:7px;background:linear-gradient(135deg,#152e59,#3877bd);position:relative}.card-chip:after{content:"";position:absolute;right:7px;top:9px;width:12px;height:12px;border:2px solid #ffffff90;border-radius:50%}.method-info{font-size:12px;font-weight:750}.method-info span{display:block;color:var(--muted);font-weight:500;margin-top:4px}.status{margin-left:auto;font-size:10px;color:var(--green);background:#e9f8f1;padding:5px 8px;border-radius:20px}.security{font-size:12px;line-height:1.55;color:var(--muted)}.security strong{display:block;color:var(--ink);font-size:13px;margin-bottom:5px}.mobile-nav{display:none}.modal-backdrop{position:fixed;inset:0;background:#071a38a8;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:20px;padding:24px;width:min(420px,100%);box-shadow:0 20px 60px #00153640}.modal h2{margin:0 0 7px;font-size:20px}.modal p{margin:0 0 18px;color:var(--muted);font-size:13px}.field{display:block;margin:13px 0}.field span{display:block;font-size:12px;font-weight:700;margin-bottom:7px}.field input{width:100%;padding:13px;border:1px solid #dce4ef;border-radius:10px;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1266e81a}.modal-actions{display:flex;gap:9px;margin-top:18px}.modal-actions button{flex:1}.btn.primary{background:var(--blue);color:#fff}.btn.cancel{background:#eef2f7;color:#52637e}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);opacity:0;background:#10264b;color:#fff;padding:12px 17px;border-radius:12px;font-size:13px;transition:.25s;z-index:20;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.disclaimer{text-align:center;color:#9aa6b8;font-size:10px;margin:24px 0 5px}
-@media(max-width:760px){.topbar{height:64px;padding:0 18px}.help{display:none}.layout{display:block;margin:25px auto 95px;padding:0 16px}.sidebar{display:none}.welcome h1{font-size:24px}.date{display:none}.balance-card{padding:23px;border-radius:20px}.amount{font-size:34px}.quick{gap:8px}.quick button{padding:13px 5px;font-size:11px}.quick .round{width:36px;height:36px}.lower{grid-template-columns:1fr}.mobile-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#fff;border-top:1px solid var(--line);padding:9px 5px calc(9px + env(safe-area-inset-bottom));z-index:6}.mobile-nav button{border:0;background:none;color:#8290a6;font-size:10px;font-weight:700;display:grid;gap:4px;justify-items:center}.mobile-nav button span{font-size:19px}.mobile-nav button.active{color:var(--blue)}.activity{padding:4px 14px}.tx-title{font-size:12px}.tx-amount{font-size:12px}.welcome{margin-bottom:17px}.disclaimer{margin-bottom:15px}}
+:root{
+  --blue:#0870e8;
+  --blue-dark:#0755b8;
+  --ink:#172b4d;
+  --muted:#718096;
+  --line:#e6ebf1;
+  --bg:#f5f7fa;
+  --green:#168653;
+  --purple:#7253c6;
+  --shadow:0 4px 18px rgba(25,48,82,.045);
+}
+
+*{box-sizing:border-box;font-family:'Source Sans 3',Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{cursor:pointer;font:inherit}
+button:focus-visible{outline:3px solid #9bc5ff;outline-offset:2px}
+
+.demo-banner{
+  background:#102b50;color:#fff;text-align:center;
+  padding:8px 12px;font-size:11px;font-weight:800;
+  letter-spacing:1px
+}
+.demo-banner span{color:#a9ceff}
+
+.topbar{
+  height:66px;background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(calc((100% - 1180px)/2),24px);
+  position:sticky;top:0;z-index:20
+}
+.wordmark{font-size:27px;font-weight:800;letter-spacing:-1px}
+.wordmark .pay{color:var(--blue)}
+.wordmark .pall{color:var(--ink)}
+.demo-pill,.demo-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  color:var(--purple);background:#f2edff;
+  border:1px solid #e5dcff;border-radius:6px;
+  padding:5px 9px;font-size:10px;font-weight:800;
+  letter-spacing:.65px
+}
+.demo-pill{border-radius:20px}
+
+.layout{
+  max-width:1180px;margin:28px auto 100px;padding:0 24px;
+  display:grid;grid-template-columns:220px minmax(0,1fr);gap:27px
+}
+.sidebar{
+  align-self:start;position:sticky;top:90px;background:#fff;
+  border:1px solid var(--line);border-radius:13px;padding:15px 10px
+}
+.side-label{
+  padding:8px 12px 12px;color:#8995a6;font-size:11px;
+  font-weight:800;letter-spacing:1px;text-transform:uppercase
+}
+.nav-item{
+  width:100%;border:0;background:transparent;display:flex;
+  align-items:center;gap:12px;padding:11px 12px;
+  border-radius:8px;color:#52627a;font-size:14px;
+  font-weight:650;text-align:left;margin:2px 0
+}
+.nav-item svg,.mobile-tab svg{
+  width:19px;height:19px;stroke:currentColor;
+  stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  flex-shrink:0
+}
+.nav-item.active{background:#edf4ff;color:var(--blue)}
+.sidebar-note{
+  margin:17px 8px 3px;padding:12px;border-radius:8px;
+  background:#f5f7fa;color:#78869a;font-size:11px;line-height:1.55
+}
+
+main{min-width:0}
+.view{display:none}
+.view.active{display:block}
+.page-heading{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:15px;margin:0 0 19px
+}
+h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
+.subtitle{font-size:13px;color:var(--muted);margin-top:4px}
+.section-label{
+  font-size:11px;color:#758399;font-weight:800;
+  letter-spacing:.9px;text-transform:uppercase;margin:25px 0 12px
+}
+
+.balance-card,.metric-card,.panel,.tool-card{
+  background:#fff;border:1px solid var(--line);
+  border-radius:12px;box-shadow:var(--shadow)
+}
+.balance-card{padding:23px 25px}
+.balance-top{display:flex;align-items:center;justify-content:space-between}
+.eyebrow{font-size:13px;color:#64738a;font-weight:650}
+.balance-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+.balance{font-size:42px;font-weight:750;letter-spacing:-1.2px;color:#142c4d}
+.icon-button{
+  width:35px;height:35px;border:1px solid var(--line);
+  border-radius:8px;background:#fff;color:#64738a;
+  display:grid;place-items:center
+}
+.icon-button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.balance-foot{
+  display:flex;justify-content:space-between;gap:10px;
+  margin-top:14px;padding-top:13px;border-top:1px solid #edf0f4;
+  font-size:11px;color:#7a8799
+}
+
+.grid-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.metric-card{padding:16px}
+.metric-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.metric-icon,.tool-icon{
+  display:grid;place-items:center;flex-shrink:0;
+  background:#edf4ff;color:var(--blue);border-radius:9px
+}
+.metric-icon{width:34px;height:34px}
+.metric-icon svg,.tool-icon svg{
+  width:19px;height:19px;stroke:currentColor;fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round
+}
+.metric-name{font-size:12px;color:#738198;font-weight:650}
+.metric-value{font-size:25px;font-weight:750;margin-top:14px}
+.metric-note{font-size:11px;color:#8b97a8;margin-top:4px}
+
+.panel{padding:19px}
+.sales-panel{margin-top:13px}
+.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.panel-title{font-size:15px;font-weight:750}
+.panel-subtitle{font-size:11px;color:#8793a4;margin-top:4px}
+.chart-total{font-size:23px;font-weight:750;margin-top:16px}
+.chart-total small{font-size:11px;color:#8793a4;font-weight:500}
+.chart{width:100%;height:140px;margin-top:10px;display:block}
+.chart-labels{display:flex;justify-content:space-between;color:#9aa5b3;font-size:10px}
+
+.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.tool-card{
+  padding:16px 15px;text-align:left;color:var(--ink);
+  transition:border-color .18s,transform .18s
+}
+.tool-card:hover{border-color:#a9c9f4;transform:translateY(-2px)}
+.tool-icon{width:39px;height:39px;margin-bottom:12px}
+.tool-title{font-size:14px;font-weight:750}
+.tool-desc{font-size:11px;line-height:1.5;color:#8491a3;margin-top:5px}
+
+.action-list{display:grid;gap:9px;margin-top:15px}
+.action-row{
+  display:flex;align-items:center;gap:12px;padding:12px;
+  border:1px solid var(--line);border-radius:9px;background:#fff
+}
+.action-row .tool-icon{margin:0}
+.action-copy{flex:1;min-width:0}
+.action-copy strong{display:block;font-size:13px}
+.action-copy span{display:block;font-size:11px;color:#8491a3;margin-top:3px}
+.arrow{color:#9aa5b3;font-size:20px}
+
+.primary-btn,.secondary-btn{
+  border-radius:7px;padding:10px 15px;font-size:13px;font-weight:750
+}
+.primary-btn{border:0;background:var(--blue);color:#fff}
+.primary-btn:hover{background:var(--blue-dark)}
+.secondary-btn{border:1px solid #dce3eb;background:#fff;color:#334760}
+
+.profile-card{display:flex;align-items:center;gap:14px}
+.avatar-large{
+  width:50px;height:50px;border-radius:50%;background:#eaf2ff;
+  color:var(--blue);display:grid;place-items:center;
+  font-size:19px;font-weight:800
+}
+.profile-name{font-size:17px;font-weight:750}
+.profile-caption{font-size:12px;color:#8491a3;margin-top:4px}
+
+.history-list{margin-top:13px}
+.history-row{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 0;border-bottom:1px solid #edf0f4
+}
+.history-row:last-child{border-bottom:0}
+.history-icon{
+  width:36px;height:36px;border-radius:9px;
+  background:#f0f4fa;color:#5c718e;
+  display:grid;place-items:center;flex-shrink:0
+}
+.history-icon svg{
+  width:18px;height:18px;stroke:currentColor;fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round
+}
+.history-info{flex:1;min-width:0}
+.history-info strong{font-size:13px;display:block}
+.history-info span{font-size:11px;color:#8b97a8;display:block;margin-top:3px}
+.history-amount{font-size:13px;font-weight:750;white-space:nowrap}
+.history-amount.positive{color:var(--green)}
+.history-amount.negative{color:#334760}
+
+.demo-disclaimer{
+  margin-top:17px;padding:12px 14px;border-radius:8px;
+  background:#f1f4f8;color:#748196;font-size:11px;line-height:1.6
+}
+
+.mobile-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  min-height:65px;background:#fff;border-top:1px solid var(--line);
+  z-index:30;padding:5px 8px env(safe-area-inset-bottom);
+  justify-content:space-around
+}
+.mobile-tab{
+  flex:1;border:0;background:transparent;color:#8491a3;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:4px;font-size:11px;font-weight:650
+}
+.mobile-tab svg{width:20px;height:20px}
+.mobile-tab.active{color:var(--blue)}
+
+.modal-backdrop{
+  display:none;position:fixed;inset:0;background:#10223b80;
+  z-index:50;align-items:center;justify-content:center;padding:20px
+}
+.modal-backdrop.open{display:flex}
+.modal{
+  width:100%;max-width:390px;background:#fff;
+  border-radius:13px;padding:23px;box-shadow:0 20px 70px #10223b30
+}
+.modal h2{font-size:21px;margin:13px 0 8px}
+.modal p{font-size:14px;color:#718096;line-height:1.6}
+.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:19px}
+
+@media(max-width:760px){
+  .topbar{height:59px;padding:0 16px}
+  .layout{display:block;margin:20px auto 90px;padding:0 15px}
+  .sidebar{display:none}
+  .mobile-nav{display:flex}
+  .page-heading{margin-bottom:15px}
+  h1{font-size:25px}
+  .balance-card{padding:18px}
+  .balance{font-size:36px}
+  .grid-three{grid-template-columns:1fr 1fr}
+  .grid-three .metric-card:last-child{grid-column:1/-1}
+  .quick-grid{grid-template-columns:1fr 1fr}
+  .sales-panel{padding:16px}
+}
+@media(max-width:380px){
+  .balance{font-size:31px}
+  .quick-grid{gap:9px}
+  .tool-card{padding:13px 11px}
+  .balance-foot{font-size:10px}
+}
 </style>
 </head>
+
 <body>
+
+
+
 <header class="topbar">
-  <div class="brand"><div class="brandmark">F</div>PayPal</div>
-  <div class="top-right"><a class="help" href="#" onclick="notify('Демо-интерфейс: платежи не выполняются');return false">Помощь</a><div class="avatar">А</div></div>
+  <div class="wordmark"><span class="pay">Pay</span><span class="pall">Pal</span></div>
+  
 </header>
+
 <div class="layout">
-  <aside class="sidebar">
-    <button class="side-link active" data-section="Главная"><span class="ico">⌂</span>Главная</button>
-    <button class="side-link" data-section="Кошелёк"><span class="ico">▣</span>Кошелёк</button>
-    <button class="side-link" data-section="История"><span class="ico">↔</span>История операций</button>
-    <button class="side-link" data-section="Платежи"><span class="ico">＋</span>Платежи</button>
-    <button class="side-link" data-section="Настройки"><span class="ico">⚙</span>Настройки</button>
-    <div class="side-note"><br><br><b></b><br></div>
-  </aside>
-  <main class="content">
-    <div class="welcome"><div><h1>Добро пожаловать, Алексей</h1><p>Вот обзор вашего кошелька</p></div><div class="date" id="today"></div></div>
-    <section class="balance-card">
-      <div class="balance-label">Общий баланс <button class="eye" id="toggleBalance">Скрыть</button></div>
-      <div class="amount" id="balance">$ 24 580,00</div>
-      <div class="subamount">Доступно на вашем счёте</div>
-      <div class="balance-actions"><button class="btn white" onclick="openModal('send')">↗ Отправить</button><button class="btn glass" onclick="openModal('request')">↓ Запросить</button></div>
-    </section>
-    <section class="quick">
-      <button onclick="openModal('send')"><div class="round">↗</div>Отправить</button>
-      <button onclick="openModal('request')"><div class="round">⇩</div>Запросить</button>
-      <button onclick="notify('Добавление карты доступно в демо-версии')"><div class="round">▤</div>Добавить карту</button>
-      <button onclick="notify('Раздел платежей в демо-режиме')"><div class="round">＋</div>Ещё</button>
-    </section>
-    <div class="section-head"><h2>Последние операции</h2><button class="link" onclick="notify('Показаны последние демо-операции')">Все операции →</button></div>
-    <section class="panel activity" id="activity">
-      <div class="transaction"><div class="tx-icon">🛍️</div><div class="tx-main"><div class="tx-title">Покупка в Market Place</div><div class="tx-date">Сегодня · 14:32</div></div><div class="tx-amount negative">− ₽ 1 250,00</div></div>
-      <div class="transaction"><div class="tx-icon">↙</div><div class="tx-main"><div class="tx-title">Получение от Марии</div><div class="tx-date">Вчера · 18:06</div></div><div class="tx-amount positive">+ ₽ 3 500,00</div></div>
-      <div class="transaction"><div class="tx-icon">☕</div><div class="tx-main"><div class="tx-title">Coffee &amp; Bakery</div><div class="tx-date">9 ноября · 09:41</div></div><div class="tx-amount negative">− ₽ 420,00</div></div>
-      <div class="transaction"><div class="tx-icon">↙</div><div class="tx-main"><div class="tx-title">Возврат средств</div><div class="tx-date">7 ноября · 16:20</div></div><div class="tx-amount positive">+ ₽ 890,00</div></div>
-    </section>
-    <div class="lower">
-      <section class="panel small-panel"><h3>Способы оплаты</h3><div class="method"><div class="card-chip"></div><div class="method-info">••••  ••••  ••••  4821<span>Visa · Основная карта</span></div><div class="status">Активна</div></div></section>
-      <section class="panel small-panel"><h3>Ваш аккаунт</h3><div class="security"><strong>Защита и конфиденциальность</strong>Настройки безопасности и данные профиля находятся под вашим контролем.</div></section>
+
+<aside class="sidebar">
+  <div class="side-label">Business Menu</div>
+
+  <button class="nav-item" data-tab="Home">
+    <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>
+    Home
+  </button>
+
+  <button class="nav-item" data-tab="Pay">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
+    Pay
+  </button>
+
+  <button class="nav-item" data-tab="Get Paid">
+    <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
+    Get Paid
+  </button>
+
+  <button class="nav-item active" data-tab="Me">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+    Me
+  </button>
+
+  <div class="sidebar-note">
+    Independent demonstration interface. All displayed balances, merchants and transactions are simulated.
+  </div>
+</aside>
+
+<main>
+
+<!-- HOME -->
+<section class="view" data-view="Home">
+  <div class="page-heading">
+    <div>
+      <h1>Business Overview</h1>
+      
     </div>
-    <div class="disclaimer"</div>
-  </main>
+    
+  </div>
+
+  <div class="balance-card">
+    <div class="balance-top">
+      <span class="eyebrow">Available balance</span>
+      
+    </div>
+
+    <div class="balance-row">
+      <div class="balance" id="balance">$24,580.00</div>
+      <button class="icon-button" id="toggleBalance" aria-label="Toggle balance visibility">
+        <svg viewBox="0 0 24 24">
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+    </div>
+
+    <div class="balance-foot">
+      
+      
+    </div>
+  </div>
+
+  <div class="section-label">In Focus</div>
+
+  <div class="grid-three">
+    <div class="metric-card">
+      <div class="metric-top">
+        <span class="metric-name">Payments received</span>
+        <span class="metric-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10"></path></svg>
+        </span>
+      </div>
+      <div class="metric-value">$0.00</div>
+      
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-top">
+        <span class="metric-name">Pending invoices</span>
+        <span class="metric-icon">
+          <svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg>
+        </span>
+      </div>
+      <div class="metric-value">0</div>
+      
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-top">
+        <span class="metric-name">Sales activity</span>
+        <span class="metric-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg>
+        </span>
+      </div>
+      <div class="metric-value">—</div>
+      <div class="metric-note">Live sales data connected</div>
+    </div>
+  </div>
+
+  <div class="section-label">Sales Summary </div>
+
+  <div class="panel sales-panel">
+    <div class="panel-heading">
+      <div>
+        <div class="panel-title">Sales performance</div>
+        
+      </div>
+      
+    </div>
+
+    <div class="chart-total">$0.00 </div>
+
+    <svg class="chart" viewBox="0 0 700 145" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0870e8" stop-opacity=".17"></stop>
+          <stop offset="100%" stop-color="#0870e8" stop-opacity="0"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0 115 C55 105 70 95 115 100 S180 68 230 82 S300 55 350 73 S420 30 470 53 S540 42 585 48 S650 20 700 28 L700 145 L0 145Z" fill="url(#areaFill)"></path>
+      <path d="M0 115 C55 105 70 95 115 100 S180 68 230 82 S300 55 350 73 S420 30 470 53 S540 42 585 48 S650 20 700 28" fill="none" stroke="#0870e8" stroke-width="2.5" stroke-linecap="round"></path>
+      <path d="M0 140H700 M0 95H700 M0 50H700" stroke="#edf0f4" stroke-width="1" stroke-dasharray="4 5"></path>
+    </svg>
+
+    <div class="chart-labels">
+      <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
+    </div>
+  </div>
+
+  <div class="section-label">Get Paid</div>
+
+  <div class="quick-grid">
+    <button class="tool-card" data-go="Get Paid">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg>
+      </span>
+      <div class="tool-title">Create invoice</div>
+      
+    </button>
+
+    <button class="tool-card" data-go="Get Paid">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg>
+      </span>
+      <div class="tool-title">Payment link</div>
+      
+    </button>
+
+    <button class="tool-card" data-go="Get Paid">
+      <span class="tool-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg>
+      </span>
+      <div class="tool-title">QR code</div>
+      
+    </button>
+  </div>
+</section>
+
+<!-- PAY -->
+<section class="view" data-view="Pay">
+  <div class="page-heading">
+    <div>
+      <h1>Pay</h1>
+      
+    </div>
+    
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Manage payments</div>
+    
+
+    <div class="action-list">
+      <div class="action-row">
+        <span class="tool-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M6 3h12v18H6zM9 12h6M9 16h4"></path></svg>
+        </span>
+        <div class="action-copy">
+          <strong>Pay an bill</strong>
+          
+        </div>
+        <span class="arrow">›</span>
+      </div>
+
+      <div class="action-row">
+        <span class="tool-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M8 15h3"></path></svg>
+        </span>
+        <div class="action-copy">
+          <strong>Manage payment methods</strong>
+          
+        </div>
+        <span class="arrow">›</span>
+      </div>
+
+      <div class="action-row">
+        <span class="tool-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
+        </span>
+        <div class="action-copy">
+          <strong>Send payment</strong>
+          
+        </div>
+        <span class="arrow">›</span>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<!-- GET PAID -->
+<section class="view" data-view="Get Paid">
+  <div class="page-heading">
+    <div>
+      <h1>Get Paid</h1>
+      
+    </div>
+    
+  </div>
+
+  <div class="quick-grid">
+    <button class="tool-card" data-modal="Create invoice">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span>
+      <div class="tool-title">Create invoice</div>
+      <div class="tool-desc">Preview invoice creation</div>
+    </button>
+
+    <button class="tool-card" data-modal="Payment links">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span>
+      <div class="tool-title">Payment links</div>
+      
+    </button>
+
+    <button class="tool-card" data-modal="QR code">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span>
+      <div class="tool-title">QR code</div>
+      <div class="tool-desc">Preview QR payment setup</div>
+    </button>
+
+    <button class="tool-card" data-modal="Products">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9"></path></svg></span>
+      <div class="tool-title">Products</div>
+      
+    </button>
+
+    <button class="tool-card" data-modal="Customers">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M17 8h5M19.5 5.5v5"></path></svg></span>
+      <div class="tool-title">Customers</div>
+      
+    </button>
+
+    <button class="tool-card" data-modal="Sales reports">
+      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg></span>
+      <div class="tool-title">Sales reports</div>
+      
+    </button>
+  </div>
+
+  
+</section>
+
+<!-- ME -->
+<section class="view active" data-view="Me">
+  <div class="page-heading">
+    <div>
+      <h1>Me</h1>
+      
+    </div>
+    
+  </div>
+
+  <div class="panel profile-card">
+    <div class="avatar-large" style="overflow:hidden;border-radius:50%;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1_14XjBhDoBIqKiR-0QDusZnXy3jJV5_DLHv7H3r41jSSb8B8nyLLaTOb&amp;s=10" alt="Profile" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
+    <div>
+      <div class="profile-name" style="display:flex;align-items:center;gap:6px;">Hsein Can Mansour<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#1877f2;border-radius:50%;color:white;font-size:12px;font-weight:bold;">✓</span>
 </div>
+      <div class="profile-caption">@HuseinCan</div>
+    </div>
+  </div>
+
+  <div class="section-label">Account</div>
+
+  <div class="panel">
+    <div class="action-list" style="margin-top:0">
+      <div class="action-row">
+        <span class="tool-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.6.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.6-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.9l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.6-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.6.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8Z"></path></svg>
+        </span>
+        <div class="action-copy"><strong>Settings</strong><span>Demo account preferences</span></div>
+        <span class="arrow">›</span>
+      </div>
+
+      <div class="action-row">
+        <span class="tool-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"></path></svg>
+        </span>
+        <div class="action-copy"><strong>Account information</strong><span>Illustrative account details</span></div>
+        <span class="arrow">›</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Activity</div>
+
+  <div class="panel">
+    <div class="panel-heading">
+      <div>
+        <div class="panel-title">Recent activities</div>
+        
+      </div>
+      
+    </div>
+
+    <!-- Keep this ID: Supabase integration uses it -->
+    <div id="activity" class="history-list">
+      <div class="history-row">
+        <div class="history-icon">
+          <img alt="Логин" src="https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg" style="
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  ">
+        </div>
+        <div class="history-info">
+          <strong>TikTok Pte. Ltd</strong>
+          <span>November 10, 2026</span>
+        </div>
+        <div class="history-amount negative">−$125.00</div>
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+</main>
+</div>
+
 <nav class="mobile-nav">
-  <button class="active" data-section="Главная"><span>⌂</span>Главная</button>
-  <button data-section="Кошелёк"><span>▣</span>Кошелёк</button>
-  <button data-section="Платежи"><span>↗</span>Платежи</button>
-  <button data-section="История"><span>↔</span>История</button>
-  <button data-section="Настройки"><span>⚙</span>Профиль</button>
+  <button class="mobile-tab" data-tab="Home">
+    <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>
+    Home
+  </button>
+  <button class="mobile-tab" data-tab="Pay">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
+    Pay
+  </button>
+  <button class="mobile-tab" data-tab="Get Paid">
+    <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
+    Get Paid
+  </button>
+  <button class="mobile-tab active" data-tab="Me">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+    Me
+  </button>
 </nav>
-<div class="modal-backdrop" id="modalBackdrop" onclick="if(event.target===this)closeModal()">
-  <div class="modal"><h2 id="modalTitle">Отправить средства</h2><p id="modalDescription"</p>
-    <label class="field"><span id="recipientLabel">Получатель</span><input id="recipient" placeholder="Имя или email"></label>
-    <label class="field"><span>Сумма (₽)</span><input id="sum" type="number" min="1" placeholder="0.00"></label>
-    <div class="modal-actions"><button class="btn cancel" onclick="closeModal()">Отмена</button><button class="btn primary" onclick="submitDemo()">Продолжить</button></div>
+
+<div class="modal-backdrop" id="demoModal">
+  <div class="modal">
+    <span class="demo-tag">DEMO PREVIEW</span>
+    <h2 id="modalTitle">Demo tool</h2>
+    <p>
+      This feature is shown for interface demonstration only.
+      No real payment, invoice, or financial operation will be created.
+    </p>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="closeModal">Close</button>
+      <button class="primary-btn" id="modalOkay">Got it</button>
+    </div>
   </div>
 </div>
-<div class="toast" id="toast"></div>
+
 <script>
-const $=s=>document.querySelector(s);
-let hidden=false, modalMode='send', toastTimer;
-$('#today').textContent=new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric'}).format(new Date());
-$('#toggleBalance').addEventListener('click',()=>{hidden=!hidden;$('#balance').textContent=hidden?'••••••••':'₽ 24 580,00';$('#toggleBalance').textContent=hidden?'Показать':'Скрыть'});
-function notify(message){const t=$('#toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
-function openModal(mode){modalMode=mode;$('#modalTitle').textContent=mode==='send'?'Отправить средства':'Запросить средства';$('#modalDescription').textContent='Демонстрация интерфейса. Реальная операция не выполняется.';$('#recipientLabel').textContent=mode==='send'?'Получатель':'У кого запросить';$('#recipient').value='';$('#sum').value='';$('#modalBackdrop').classList.add('show')}
-function closeModal(){$('#modalBackdrop').classList.remove('show')}
-function submitDemo(){const person=$('#recipient').value.trim(),sum=Number($('#sum').value);if(!person||!Number.isFinite(sum)||sum<=0){notify('Заполните получателя и корректную сумму');return}closeModal();notify(modalMode==='send'?'Демо-перевод подготовлен':'Демо-запрос подготовлен')}
-document.querySelectorAll('[data-section]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-section]').forEach(b=>b.classList.remove('active'));document.querySelectorAll(`[data-section="${btn.dataset.section}"]`).forEach(b=>b.classList.add('active'));if(btn.dataset.section!=='Главная')notify('Раздел «'+btn.dataset.section+'» — демонстрационный экран')}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+(() => {
+  const views = document.querySelectorAll('[data-view]');
+  const tabs = document.querySelectorAll('[data-tab]');
+
+  function showView(name) {
+    views.forEach(view => {
+      view.classList.toggle('active', view.dataset.view === name);
+    });
+
+    tabs.forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.tab === name);
+    });
+
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => showView(tab.dataset.tab));
+  });
+
+  document.querySelectorAll('[data-go]').forEach(button => {
+    button.addEventListener('click', () => showView(button.dataset.go));
+  });
+
+  const modal = document.getElementById('demoModal');
+  const modalTitle = document.getElementById('modalTitle');
+
+  function openModal(title) {
+    modalTitle.textContent = title;
+    modal.classList.add('open');
+  }
+
+  document.querySelectorAll('[data-modal]').forEach(button => {
+    button.addEventListener('click', () => openModal(button.dataset.modal));
+  });
+
+  document.getElementById('closeModal').addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+
+  document.getElementById('modalOkay').addEventListener('click', () => {
+    modal.classList.remove('open');
+  });
+
+  modal.addEventListener('click', event => {
+    if (event.target === modal) modal.classList.remove('open');
+  });
+})();
 </script>
-  <script src="/supabase-bank-demo.js"></script>
-</body>
-</html>
+
+<!-- Supabase demo integration: keep this file unchanged -->
+<script src="/supabase-bank-demo.js"></script>
+
+
+
+</body></html>
