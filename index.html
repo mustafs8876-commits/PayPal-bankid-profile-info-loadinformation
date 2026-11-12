@@ -318,7 +318,16 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
     <p style="margin:0 0 20px;font-size:13px;color:#718096;">Enter your security password to access your account</p>
 
     <input type="email" value="hsein.mansour@paypal-business.com" readonly style="width:100%;padding:12px 14px;border:1px solid #dce3eb;border-radius:10px;font-size:14px;color:#172b4d;background:#f8fafc;margin-bottom:12px;outline:none;">
-    <input type="password" id="gatePass" placeholder="Password" style="width:100%;padding:12px 14px;border:1px solid #dce3eb;border-radius:10px;font-size:14px;color:#172b4d;margin-bottom:8px;outline:none;">
+        <div style="position:relative;margin-bottom:8px;">
+      <input type="password" id="gatePass" placeholder="Password" style="width:100%;padding:12px 42px 12px 14px;border:1px solid #dce3eb;border-radius:10px;font-size:14px;color:#172b4d;outline:none;box-sizing:border-box;">
+      <button type="button" id="toggleGatePass" aria-label="Show password" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:#718096;padding:4px;display:grid;place-items:center;cursor:pointer;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </button>
+    </div>
+
     <div id="gateErr" style="color:#dc2626;font-size:12px;text-align:left;margin-bottom:12px;display:none;">Incorrect password. Try again.</div>
 
         <button id="gateSubmit" type="button" style="width:100%;padding:12px;border:0;border-radius:99px;background:#0870e8;color:#ffffff;font-size:15px;font-weight:700;margin-top:4px;cursor:pointer;">Log In</button>
