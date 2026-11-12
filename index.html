@@ -555,7 +555,7 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   function showView(name) {
     views.forEach(view => view.classList.toggle('active', view.dataset.view === name));
     tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   tabs.forEach(tab => tab.addEventListener('click', () => showView(tab.dataset.tab)));
@@ -570,6 +570,27 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 
   const inputStyle = 'width:100%;padding:10px 12px;border:1px solid #dce3eb;border-radius:8px;font-size:13px;margin-top:5px;margin-bottom:12px;outline:none;';
   const labelStyle = 'display:block;font-size:12px;font-weight:700;color:#334760;';
+
+  function setButtons(cancelText, confirmText, onConfirm) {
+    modalActions.innerHTML = `
+      <button class="secondary-btn" id="closeModal">${cancelText}</button>
+      <button class="primary-btn" id="modalOkay">${confirmText}</button>
+    `;
+    document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+    document.getElementById('modalOkay').addEventListener('click', onConfirm);
+  }
+
+  function showSuccess(message) {
+    modalBody.innerHTML = `
+      <div style="text-align:center;padding:16px 0;">
+        <div style="width:42px;height:42px;border-radius:50%;background:#dcfce7;color:#166534;display:grid;place-items:center;margin:0 auto 10px;font-size:20px;font-weight:800;">✓</div>
+        <strong style="display:block;font-size:15px;color:#172b4d;margin-bottom:4px;">Completed</strong>
+        <span style="font-size:12px;color:#718096;">${message}</span>
+      </div>
+    `;
+    modalActions.innerHTML = `<button class="primary-btn" style="width:100%;" id="modalDone">Done</button>`;
+    document.getElementById('modalDone').addEventListener('click', () => modal.classList.remove('open'));
+  }
 
   function renderModalContent(title) {
     const key = title.toLowerCase();
@@ -668,37 +689,6 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
       modalBody.innerHTML = `
         <div style="background:#f5f7fa;padding:14px;border-radius:10px;text-align:center;">
           <strong style="display:block;color:#172b4d;font-size:14px;margin-bottom:4px;">${title} Synced</strong>
-          <span style="font-size:12px;color:#718096;">All records are up to date with your merchant ledger. Last sync: Today, 05:30 AM.</span>
+          <span style="font-size:12px;color:#718096;">All records are up to date with your merchant ledger.</span>
         </div>
       `;
-      setButtons('Close', 'Export CSV', () => showSuccess(`${title} report exported successfully.`));
-    } else {
-      modalBody.innerHTML = `
-        <div style="background:#f5f7fa;padding:12px;border-radius:10px;font-size:12px;">
-          <strong style="display:block;color:#172b4d;margin-bottom:4px;">No new alerts</strong>
-          <span>Your account security and payout schedule are operating normally.</span>
-        </div>
-      `;
-      setButtons('Close', 'Got it', () => modal.classList.remove('open'));
-    }
-  }
-
-  function setButtons(cancelText, confirmText, onConfirm) {
-    modalActions.innerHTML = `
-      <button class="secondary-btn" id="closeModal">${cancelText}</button>
-      <button class="primary-btn" id="modalOkay">${confirmText}</button>
-    `;
-    document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
-    document.getElementById('modalOkay').addEventListener('click', onConfirm);
-  }
-
-  function showSuccess(message) {
-    modalBody.innerHTML = `
-      <div style="text-align:center;padding:16px 0;">
-
-
-<!-- Demo integration placeholder. Keep only if this file exists in your project. -->
-<script src="/supabase-bank-demo.js"></script>
-
-
-</body></html>
