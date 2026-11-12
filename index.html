@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffffff">
-<title>PayPal</title>
+<title>PayPal-style Demo Dashboard</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -26,10 +26,24 @@ body{margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antia
 button{cursor:pointer;font:inherit}
 button:focus-visible{outline:3px solid #9bc5ff;outline-offset:2px}
 
+/* Header brand */
+.brand-lockup{display:flex;align-items:center;gap:9px}
+.header-actions{display:flex;align-items:center;gap:9px}
+.header-actions .icon-button{width:36px;height:36px}
+.header-actions button{position:relative}
+.header-actions button:hover{background:#f5f8fc}
+.header-actions svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.paypal-logo{
+  width:29px;height:29px;object-fit:contain;border-radius:50%;
+  display:block;flex-shrink:0
+}
+.wordmark{font-size:27px;font-weight:800;letter-spacing:-1px;line-height:1}
+.wordmark .pay{color:var(--blue)}
+.wordmark .pall{color:var(--ink)}
+
 .demo-banner{
   background:#102b50;color:#fff;text-align:center;
-  padding:8px 12px;font-size:11px;font-weight:800;
-  letter-spacing:1px
+  padding:8px 12px;font-size:11px;font-weight:800;letter-spacing:1px
 }
 .demo-banner span{color:#a9ceff}
 
@@ -39,14 +53,10 @@ button:focus-visible{outline:3px solid #9bc5ff;outline-offset:2px}
   padding:0 max(calc((100% - 1180px)/2),24px);
   position:sticky;top:0;z-index:20
 }
-.wordmark{font-size:27px;font-weight:800;letter-spacing:-1px}
-.wordmark .pay{color:var(--blue)}
-.wordmark .pall{color:var(--ink)}
 .demo-pill,.demo-tag{
   display:inline-flex;align-items:center;gap:5px;
-  color:var(--purple);background:#f2edff;
-  border:1px solid #e5dcff;border-radius:6px;
-  padding:5px 9px;font-size:10px;font-weight:800;
+  color:var(--purple);background:#f2edff;border:1px solid #e5dcff;
+  border-radius:6px;padding:5px 9px;font-size:10px;font-weight:800;
   letter-spacing:.65px
 }
 .demo-pill{border-radius:20px}
@@ -65,14 +75,12 @@ button:focus-visible{outline:3px solid #9bc5ff;outline-offset:2px}
 }
 .nav-item{
   width:100%;border:0;background:transparent;display:flex;
-  align-items:center;gap:12px;padding:11px 12px;
-  border-radius:8px;color:#52627a;font-size:14px;
-  font-weight:650;text-align:left;margin:2px 0
+  align-items:center;gap:12px;padding:11px 12px;border-radius:8px;
+  color:#52627a;font-size:14px;font-weight:650;text-align:left;margin:2px 0
 }
 .nav-item svg,.mobile-tab svg{
-  width:19px;height:19px;stroke:currentColor;
-  stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;
-  flex-shrink:0
+  width:19px;height:19px;stroke:currentColor;stroke-width:1.8;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0
 }
 .nav-item.active{background:#edf4ff;color:var(--blue)}
 .sidebar-note{
@@ -90,13 +98,13 @@ main{min-width:0}
 h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 .subtitle{font-size:13px;color:var(--muted);margin-top:4px}
 .section-label{
-  font-size:11px;color:#758399;font-weight:800;
-  letter-spacing:.9px;text-transform:uppercase;margin:25px 0 12px
+  font-size:11px;color:#758399;font-weight:800;letter-spacing:.9px;
+  text-transform:uppercase;margin:25px 0 12px
 }
 
 .balance-card,.metric-card,.panel,.tool-card{
-  background:#fff;border:1px solid var(--line);
-  border-radius:12px;box-shadow:var(--shadow)
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow)
 }
 .balance-card{padding:23px 25px}
 .balance-top{display:flex;align-items:center;justify-content:space-between}
@@ -104,15 +112,14 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 .balance-row{display:flex;align-items:center;gap:12px;margin-top:10px}
 .balance{font-size:42px;font-weight:750;letter-spacing:-1.2px;color:#142c4d}
 .icon-button{
-  width:35px;height:35px;border:1px solid var(--line);
-  border-radius:8px;background:#fff;color:#64738a;
-  display:grid;place-items:center
+  width:35px;height:35px;border:1px solid var(--line);border-radius:8px;
+  background:#fff;color:#64738a;display:grid;place-items:center
 }
-.icon-button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon-button svg{width:18px;height:18px;stroke:currentColor;fill:none;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .balance-foot{
-  display:flex;justify-content:space-between;gap:10px;
-  margin-top:14px;padding-top:13px;border-top:1px solid #edf0f4;
-  font-size:11px;color:#7a8799
+  display:flex;justify-content:space-between;gap:10px;margin-top:14px;
+  padding-top:13px;border-top:1px solid #edf0f4;font-size:11px;color:#7a8799
 }
 
 .grid-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
@@ -124,8 +131,8 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 }
 .metric-icon{width:34px;height:34px}
 .metric-icon svg,.tool-icon svg{
-  width:19px;height:19px;stroke:currentColor;fill:none;
-  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round
+  width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round
 }
 .metric-name{font-size:12px;color:#738198;font-weight:650}
 .metric-value{font-size:25px;font-weight:750;margin-top:14px}
@@ -162,41 +169,54 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 .action-copy span{display:block;font-size:11px;color:#8491a3;margin-top:3px}
 .arrow{color:#9aa5b3;font-size:20px}
 
-.primary-btn,.secondary-btn{
-  border-radius:7px;padding:10px 15px;font-size:13px;font-weight:750
-}
+.primary-btn,.secondary-btn{border-radius:7px;padding:10px 15px;font-size:13px;font-weight:750}
 .primary-btn{border:0;background:var(--blue);color:#fff}
 .primary-btn:hover{background:var(--blue-dark)}
 .secondary-btn{border:1px solid #dce3eb;background:#fff;color:#334760}
 
 .profile-card{display:flex;align-items:center;gap:14px}
 .avatar-large{
-  width:50px;height:50px;border-radius:50%;background:#eaf2ff;
-  color:var(--blue);display:grid;place-items:center;
-  font-size:19px;font-weight:800
+  width:50px;height:50px;border-radius:50%;background:#eaf2ff;color:var(--blue);
+  display:grid;place-items:center;font-size:19px;font-weight:800;overflow:hidden
 }
+.avatar-large img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
 .profile-name{font-size:17px;font-weight:750}
 .profile-caption{font-size:12px;color:#8491a3;margin-top:4px}
 
-.history-list{margin-top:13px}
-.history-row{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 0;border-bottom:1px solid #edf0f4
+/* Recent activities layout fix */
+#activity{
+  display:flex;flex-direction:column;gap:0;width:100%;overflow:hidden
 }
-.history-row:last-child{border-bottom:0}
-.history-icon{
-  width:36px;height:36px;border-radius:9px;
-  background:#f0f4fa;color:#5c718e;
-  display:grid;place-items:center;flex-shrink:0
+#activity .history-row{
+  display:flex !important;flex-direction:row !important;align-items:center !important;
+  gap:12px;width:100%;min-width:0;padding:13px 0;
+  border-bottom:1px solid #edf0f4
 }
-.history-icon svg{
-  width:18px;height:18px;stroke:currentColor;fill:none;
-  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round
+#activity .history-row:last-child{border-bottom:0}
+#activity .history-icon{
+  width:36px !important;height:36px !important;min-width:36px;flex:0 0 36px;
+  overflow:hidden;border-radius:9px;display:flex;align-items:center;justify-content:center
 }
-.history-info{flex:1;min-width:0}
-.history-info strong{font-size:13px;display:block}
-.history-info span{font-size:11px;color:#8b97a8;display:block;margin-top:3px}
-.history-amount{font-size:13px;font-weight:750;white-space:nowrap}
+#activity .history-icon img{
+  width:100% !important;height:100% !important;object-fit:contain !important;
+  border-radius:9px;display:block
+}
+#activity .history-info{flex:1;min-width:0;overflow:hidden}
+#activity .history-info strong{font-size:13px;white-space:normal;display:block}
+#activity .history-info span{font-size:11px;color:#8b97a8;display:block;margin-top:3px}
+#activity .history-info .history-status{display:inline-flex;width:max-content;margin-top:6px;padding:3px 7px;border-radius:5px;background:#f1f4f8;color:#65748a;font-size:10px;font-weight:700}
+.demo-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.demo-bank-card{min-height:145px;padding:17px 18px;border-radius:13px;color:#fff;background:linear-gradient(125deg,#123f79,#0870e8 72%,#4b9cf2);position:relative;overflow:hidden;box-shadow:0 8px 22px #0870e822}
+.demo-bank-card:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff30;border-radius:50%;right:-55px;top:-65px;box-shadow:0 0 0 20px #ffffff0b,0 0 0 40px #ffffff08}
+.demo-bank-card.secondary{background:linear-gradient(125deg,#26344c,#596b85)}
+.demo-card-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:700;letter-spacing:.7px}
+.demo-card-chip{width:28px;height:21px;border:1px solid #ffffffa0;border-radius:5px;margin-top:17px;background:linear-gradient(135deg,#ffffff70,#ffffff15)}
+.demo-card-number{font-size:15px;letter-spacing:2px;margin-top:12px;font-weight:650}
+.demo-card-bottom{display:flex;justify-content:space-between;margin-top:9px;font-size:10px;color:#ffffffd9}
+.mobile-tab.active svg{fill:currentColor;stroke-width:2.2}
+.mobile-tab.active svg path,.mobile-tab.active svg circle{fill:currentColor;stroke:currentColor}
+.mobile-tab.active svg{background:#edf4ff;border-radius:8px;box-sizing:content-box;padding:3px}
+#activity .history-amount{flex-shrink:0;white-space:nowrap;font-size:13px;font-weight:750}
 .history-amount.positive{color:var(--green)}
 .history-amount.negative{color:#334760}
 
@@ -206,27 +226,26 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 }
 
 .mobile-nav{
-  display:none;position:fixed;bottom:0;left:0;right:0;
-  min-height:65px;background:#fff;border-top:1px solid var(--line);
-  z-index:30;padding:5px 8px env(safe-area-inset-bottom);
-  justify-content:space-around
+  display:none;position:fixed;bottom:0;left:0;right:0;min-height:65px;
+  background:#fff;border-top:1px solid var(--line);z-index:30;
+  padding:5px 8px env(safe-area-inset-bottom);justify-content:space-around
 }
 .mobile-tab{
-  flex:1;border:0;background:transparent;color:#8491a3;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:4px;font-size:11px;font-weight:650
+  flex:1;border:0;background:transparent;color:#8491a3;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-size:11px;font-weight:650
 }
 .mobile-tab svg{width:20px;height:20px}
 .mobile-tab.active{color:var(--blue)}
 
 .modal-backdrop{
-  display:none;position:fixed;inset:0;background:#10223b80;
-  z-index:50;align-items:center;justify-content:center;padding:20px
+  display:none;position:fixed;inset:0;background:#10223b80;z-index:50;
+  align-items:center;justify-content:center;padding:20px
 }
 .modal-backdrop.open{display:flex}
 .modal{
-  width:100%;max-width:390px;background:#fff;
-  border-radius:13px;padding:23px;box-shadow:0 20px 70px #10223b30
+  width:100%;max-width:390px;background:#fff;border-radius:13px;
+  padding:23px;box-shadow:0 20px 70px #10223b30
 }
 .modal h2{font-size:21px;margin:13px 0 8px}
 .modal p{font-size:14px;color:#718096;line-height:1.6}
@@ -258,382 +277,208 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 <body>
 
 
-
 <header class="topbar">
-  <div class="wordmark"><span class="pay">Pay</span><span class="pall">Pal</span></div>
-  
+  <div class="brand-lockup">
+    <img class="paypal-logo" src="https://cdn-icons-png.flaticon.com/512/5968/5968365.png" alt="PayPal logo">
+    <div class="wordmark"><span class="pay">Pay</span><span class="pall">Pal</span></div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-button" type="button" data-modal="Notifications" aria-label="Demo notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path></svg></button>
+    <button class="icon-button" type="button" data-modal="Help and support" aria-label="Help and support"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.6 9a2.5 2.5 0 1 1 4.4 1.6c-1.1 1.1-2 1.3-2 3M12 17.5h.01"></path></svg></button>
+    
+  </div>
 </header>
 
 <div class="layout">
-
 <aside class="sidebar">
   <div class="side-label">Business Menu</div>
-
-  <button class="nav-item" data-tab="Home">
-    <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>
-    Home
+  <button class="nav-item active" data-tab="Home">
+    <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>Home
   </button>
-
   <button class="nav-item" data-tab="Pay">
-    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
-    Pay
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>Pay
   </button>
-
   <button class="nav-item" data-tab="Get Paid">
-    <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
-    Get Paid
+    <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>Get Paid
   </button>
-
-  <button class="nav-item active" data-tab="Me">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
-    Me
+  <button class="nav-item" data-tab="Me">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Me
   </button>
-
-  <div class="sidebar-note">
-    Independent demonstration interface. All displayed balances, merchants and transactions are simulated.
-  </div>
+  <div class="sidebar-note">Independent demonstration interface. All displayed balances, merchants and transactions are simulated.</div>
 </aside>
 
 <main>
-
-<!-- HOME -->
-<section class="view" data-view="Home">
-  <div class="page-heading">
-    <div>
-      <h1>Business Overview</h1>
-      
+<section class="view active" data-view="Home">
+  <div class="page-heading"><div><h1>Business Overview</h1></div></div>
+  <div class="balance-card">
+    <div class="balance-top"><span class="eyebrow">Available balance</span></div>
+    <div class="balance-row">
+      <div class="balance" id="balance">$24,580.00</div>
+      <button class="icon-button" id="toggleBalance" aria-label="Toggle balance visibility">
+        <svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      </button>
     </div>
     
   </div>
 
-  <div class="balance-card">
-    <div class="balance-top">
-      <span class="eyebrow">Available balance</span>
-      
-    </div>
+  <div class="section-label">Cards</div>
+  <div class="demo-card-grid">
+    <div class="demo-bank-card"><div class="demo-card-top"><span>PAYMENT CARD</span><div class="demo-card-visa">
+  <svg width="28" height="9" viewBox="0 0 100 32" fill="none" xmlns="http://w3.org">
+    <path d="M38.5 2.5L32.1 29.5H24.6L31 2.5H38.5ZM71.8 19.8L75.7 9.1L77.9 19.8H71.8ZM80.2 29.5H87.1L81.1 2.5H74.7C73.2 2.5 72 3.4 71.4 4.8L60.9 29.5H68.8L70.4 25.1H80L80.2 29.5ZM60.5 20.7C60.5 13.6 50.6 13.2 50.7 10C50.7 9 51.7 8 53.7 7.7C54.7 7.6 57.5 7.5 60.7 9L62 3.1C60.2 2.4 57.9 1.8 55.1 1.8C47.7 1.8 42.5 5.7 42.4 11.4C42.3 15.6 46.2 17.9 49.1 19.3C52.1 20.8 53.1 21.7 53.1 23C53.1 25 50.7 25.9 48.5 25.9C44.6 25.9 42.3 24.9 40.5 24L39.1 30.1C41 31 44.5 31.7 48.1 31.8C56 31.8 60.5 27.9 60.5 20.7ZM26.8 2.5L14.6 29.5H6.6L0.6 6.7C0.2 5.3 -0.1 4.8 -1.2 4.2C-3 3.2 -5.9 2.3 -8.5 1.8L-8.3 2.5H4.6C6.3 2.5 7.8 3.6 8.2 5.5L11.4 22.3L19.2 2.5H26.8Z" fill="#FFFFFF"></path>
+  </svg>
+</div>
 
-    <div class="balance-row">
-      <div class="balance" id="balance">$24,580.00</div>
-      <button class="icon-button" id="toggleBalance" aria-label="Toggle balance visibility">
-        <svg viewBox="0 0 24 24">
-          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-      </button>
-    </div>
+</div><div style="display: flex; align-items: center; gap: 10px; margin: 12px 0;">
+  <!-- 1. Сам чип -->
+  <svg width="36" height="27" viewBox="0 0 50 38" fill="none" xmlns="http://w3.org" style="flex-shrink: 0;">
+    <rect width="50" height="38" rx="6" fill="url(#chip-gradient)"></rect>
+    <path d="M16 0V38M34 0V38M0 13H16M34 13H50M0 25H16M34 25H50M16 19H34" stroke="#8C6D1F" stroke-width="1.2"></path>
+    <rect x="16" y="10" width="18" height="18" rx="3" stroke="#8C6D1F" stroke-width="1.2"></rect>
+    <defs>
+      <linearGradient id="chip-gradient" x1="0" y1="0" x2="50" y2="38" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#F7E08B"></stop>
+        <stop offset="0.5" stop-color="#D4AF37"></stop>
+        <stop offset="1" stop-color="#AA821C"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
 
-    <div class="balance-foot">
-      
-      
-    </div>
+  <!-- 2. Иконка бесконтактной оплаты (NFC) справа от чипа -->
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org" style="opacity: 0.75; flex-shrink: 0;">
+    <path d="M8.5 14.5C9.3 13.1 9.3 10.9 8.5 9.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+    <path d="M11.5 16.5C13 13.8 13 10.2 11.5 7.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+    <path d="M14.5 18.5C16.8 14.6 16.8 9.4 14.5 5.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+  </svg>
+</div>
+
+
+
+<div class="demo-card-number">•••• &nbsp;•••• &nbsp;•••• &nbsp;0743</div><div class="demo-card-bottom">
+  <span>Hsein Can Mansour</span>
+  <span style="font-size: 11px; opacity: 0.85; letter-spacing: 0.5px;">08/29</span>
+</div>
+
+</div>
+    <div class="demo-bank-card secondary"><div class="demo-card-top"><span>VIRTUAL CARD</span><div class="demo-card-mastercard">
+  <svg width="26" height="16" viewBox="0 0 36 22" fill="none" xmlns="http://w3.org">
+    <circle cx="11" cy="11" r="11" fill="#EB001B"></circle>
+    <circle cx="25" cy="11" r="11" fill="#F79E1B"></circle>
+    <path d="M18 2.3396C15.5653 4.3568 14 7.4932 14 11C14 14.5068 15.5653 17.6432 18 19.6604C20.4347 17.6432 22 14.5068 22 11C22 7.4932 20.4347 4.3568 18 2.3396Z" fill="#FF5F00"></path>
+  </svg>
+</div>
+
+</div>
+
+<div style="height: 32px;"></div><div class="demo-card-number">                            •••• &nbsp;•••• &nbsp;•••• &nbsp;1906</div>
+<div class="demo-card-bottom">
+  <span>Hsein Can Mansour</span>
+  <span style="font-size: 11px; opacity: 0.85; letter-spacing: 0.5px;">11/28</span>
+</div>
+
+</div>
   </div>
 
   <div class="section-label">In Focus</div>
-
   <div class="grid-three">
-    <div class="metric-card">
-      <div class="metric-top">
-        <span class="metric-name">Payments received</span>
-        <span class="metric-icon">
-          <svg viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10"></path></svg>
-        </span>
-      </div>
-      <div class="metric-value">$0.00</div>
-      
-    </div>
-
-    <div class="metric-card">
-      <div class="metric-top">
-        <span class="metric-name">Pending invoices</span>
-        <span class="metric-icon">
-          <svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg>
-        </span>
-      </div>
-      <div class="metric-value">0</div>
-      
-    </div>
-
-    <div class="metric-card">
-      <div class="metric-top">
-        <span class="metric-name">Sales activity</span>
-        <span class="metric-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg>
-        </span>
-      </div>
-      <div class="metric-value">—</div>
-      <div class="metric-note">Live sales data connected</div>
-    </div>
+    <div class="metric-card"><div class="metric-top"><span class="metric-name">Payments received</span><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10"></path></svg></span></div><div class="metric-value">$4,250.00</div></div>
+    <div class="metric-card"><div class="metric-top"><span class="metric-name">Pending invoices</span><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span></div><div class="metric-value">0</div></div>
+    <div class="metric-card"><div class="metric-top"><span class="metric-name">Sales activity</span><span class="metric-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg></span></div><div class="metric-value">142 transactions</div><div class="metric-note">This week</div></div>
   </div>
 
-  <div class="section-label">Sales Summary </div>
-
+  <div class="section-label">Sales Summary</div>
   <div class="panel sales-panel">
-    <div class="panel-heading">
-      <div>
-        <div class="panel-title">Sales performance</div>
-        
-      </div>
-      
-    </div>
-
-    <div class="chart-total">$0.00 </div>
-
+    <div class="panel-heading"><div class="panel-title">Sales performance</div></div>
+    <div class="chart-total">$12,480.00<span style="margin-left: 8px; font-size: 13px; font-weight: 400; color: #64748b;">Last 30 days</span>
+</div>
     <svg class="chart" viewBox="0 0 700 145" preserveAspectRatio="none">
-      <defs>
-        <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#0870e8" stop-opacity=".17"></stop>
-          <stop offset="100%" stop-color="#0870e8" stop-opacity="0"></stop>
-        </linearGradient>
-      </defs>
+      <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0870e8" stop-opacity=".17"></stop><stop offset="100%" stop-color="#0870e8" stop-opacity="0"></stop></linearGradient></defs>
       <path d="M0 115 C55 105 70 95 115 100 S180 68 230 82 S300 55 350 73 S420 30 470 53 S540 42 585 48 S650 20 700 28 L700 145 L0 145Z" fill="url(#areaFill)"></path>
       <path d="M0 115 C55 105 70 95 115 100 S180 68 230 82 S300 55 350 73 S420 30 470 53 S540 42 585 48 S650 20 700 28" fill="none" stroke="#0870e8" stroke-width="2.5" stroke-linecap="round"></path>
       <path d="M0 140H700 M0 95H700 M0 50H700" stroke="#edf0f4" stroke-width="1" stroke-dasharray="4 5"></path>
     </svg>
-
-    <div class="chart-labels">
-      <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
-    </div>
+    <div class="chart-labels"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span></div>
   </div>
 
   <div class="section-label">Get Paid</div>
-
   <div class="quick-grid">
-    <button class="tool-card" data-go="Get Paid">
-      <span class="tool-icon">
-        <svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg>
-      </span>
-      <div class="tool-title">Create invoice</div>
-      
-    </button>
-
-    <button class="tool-card" data-go="Get Paid">
-      <span class="tool-icon">
-        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg>
-      </span>
-      <div class="tool-title">Payment link</div>
-      
-    </button>
-
-    <button class="tool-card" data-go="Get Paid">
-      <span class="tool-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg>
-      </span>
-      <div class="tool-title">QR code</div>
-      
-    </button>
+    <button class="tool-card" data-go="Get Paid"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span><div class="tool-title">Create invoice</div></button>
+    <button class="tool-card" data-go="Get Paid"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span><div class="tool-title">Payment link</div></button>
+    <button class="tool-card" data-go="Get Paid"><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span><div class="tool-title">QR code</div></button>
   </div>
 </section>
 
-<!-- PAY -->
 <section class="view" data-view="Pay">
-  <div class="page-heading">
-    <div>
-      <h1>Pay</h1>
-      
-    </div>
-    
-  </div>
-
+  <div class="page-heading"><div><h1>Pay</h1></div></div>
   <div class="panel">
     <div class="panel-title">Manage payments</div>
-    
-
     <div class="action-list">
-      <div class="action-row">
-        <span class="tool-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 7h16M6 3h12v18H6zM9 12h6M9 16h4"></path></svg>
-        </span>
-        <div class="action-copy">
-          <strong>Pay an bill</strong>
-          
-        </div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="action-row">
-        <span class="tool-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M8 15h3"></path></svg>
-        </span>
-        <div class="action-copy">
-          <strong>Manage payment methods</strong>
-          
-        </div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="action-row">
-        <span class="tool-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
-        </span>
-        <div class="action-copy">
-          <strong>Send payment</strong>
-          
-        </div>
-        <span class="arrow">›</span>
-      </div>
+      <div class="action-row"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M6 3h12v18H6zM9 12h6M9 16h4"></path></svg></span><div class="action-copy"><strong>Pay a bill</strong></div><span class="arrow">›</span></div>
+      <div class="action-row"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M8 15h3"></path></svg></span><div class="action-copy"><strong>Manage payment methods</strong></div><span class="arrow">›</span></div>
+      <div class="action-row"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg></span><div class="action-copy"><strong>Send payment</strong></div><span class="arrow">›</span></div>
     </div>
-
-    
   </div>
 </section>
 
-<!-- GET PAID -->
 <section class="view" data-view="Get Paid">
-  <div class="page-heading">
-    <div>
-      <h1>Get Paid</h1>
-      
-    </div>
-    
-  </div>
-
+  <div class="page-heading"><div><h1>Get Paid</h1></div></div>
   <div class="quick-grid">
-    <button class="tool-card" data-modal="Create invoice">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span>
-      <div class="tool-title">Create invoice</div>
-      <div class="tool-desc">Preview invoice creation</div>
-    </button>
-
-    <button class="tool-card" data-modal="Payment links">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span>
-      <div class="tool-title">Payment links</div>
-      
-    </button>
-
-    <button class="tool-card" data-modal="QR code">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span>
-      <div class="tool-title">QR code</div>
-      <div class="tool-desc">Preview QR payment setup</div>
-    </button>
-
-    <button class="tool-card" data-modal="Products">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9"></path></svg></span>
-      <div class="tool-title">Products</div>
-      
-    </button>
-
-    <button class="tool-card" data-modal="Customers">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M17 8h5M19.5 5.5v5"></path></svg></span>
-      <div class="tool-title">Customers</div>
-      
-    </button>
-
-    <button class="tool-card" data-modal="Sales reports">
-      <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg></span>
-      <div class="tool-title">Sales reports</div>
-      
-    </button>
+    <button class="tool-card" data-modal="Create invoice"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span><div class="tool-title">Create invoice</div><div class="tool-desc">Invoice creation</div></button>
+    <button class="tool-card" data-modal="Payment links"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span><div class="tool-title">Payment links</div></button>
+    <button class="tool-card" data-modal="QR code"><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span><div class="tool-title">QR code</div><div class="tool-desc">QR payment </div></button>
+    <button class="tool-card" data-modal="Products"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9"></path></svg></span><div class="tool-title">Products</div></button>
+    <button class="tool-card" data-modal="Customers"><span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M17 8h5M19.5 5.5v5"></path></svg></span><div class="tool-title">Customers</div></button>
+    <button class="tool-card" data-modal="Sales reports"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg></span><div class="tool-title">Sales reports</div></button>
   </div>
-
-  
 </section>
 
-<!-- ME -->
-<section class="view active" data-view="Me">
-  <div class="page-heading">
-    <div>
-      <h1>Me</h1>
-      
-    </div>
-    
-  </div>
-
+<section class="view" data-view="Me">
+  <div class="page-heading"><div><h1>Me</h1></div></div>
   <div class="panel profile-card">
-    <div class="avatar-large" style="overflow:hidden;border-radius:50%;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1_14XjBhDoBIqKiR-0QDusZnXy3jJV5_DLHv7H3r41jSSb8B8nyLLaTOb&amp;s=10" alt="Profile" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
+    <div class="avatar-large"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1_14XjBhDoBIqKiR-0QDusZnXy3jJV5_DLHv7H3r41jSSb8B8nyLLaTOb&amp;s=10" alt="Demo profile"></div>
     <div>
-      <div class="profile-name" style="display:flex;align-items:center;gap:6px;">Hsein Can Mansour<span style="display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;background:#1877f2;border-radius:50%;color:white;font-size:12px;font-weight:bold;">✓</span>
-</div>
+      <div class="profile-name">Hsein Can Mansour <span aria-label="demo badge" style="color:#1877f2"></span></div>
       <div class="profile-caption">@HuseinCan</div>
     </div>
   </div>
 
   <div class="section-label">Account</div>
-
   <div class="panel">
     <div class="action-list" style="margin-top:0">
-      <div class="action-row">
-        <span class="tool-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.6.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.6-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.9l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.6-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.6.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8Z"></path></svg>
-        </span>
-        <div class="action-copy"><strong>Settings</strong><span>Account preferences</span></div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="action-row">
-        <span class="tool-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"></path></svg>
-        </span>
-        <div class="action-copy"><strong>Account information</strong><span>Account details</span></div>
-        <span class="arrow">›</span>
-      </div>
+      <div class="action-row"><span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.6a8 8 0 0 1-1.6.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.6-.9l-1.7.6-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.9l-1.4-1.1 1.4-2.4 1.7.6a8 8 0 0 1 1.6-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.6.9l1.7-.6 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.8Z"></path></svg></span><div class="action-copy"><strong>Settings</strong><span>Login, security, and notifications</span></div><span class="arrow">›</span></div>
+      <div class="action-row"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"></path></svg></span><div class="action-copy"><strong>Account information</strong><span>Personal info, addresses, and tax IDs</span></div><span class="arrow">›</span></div>
     </div>
   </div>
 
   <div class="section-label">Activity</div>
-
   <div class="panel">
-    <div class="panel-heading">
-      <div>
-        <div class="panel-title">Recent activities</div>
-        
-      </div>
-      
-    </div>
-
-    <!-- Keep this ID: Supabase integration uses it -->
+    <div class="panel-heading"><div class="panel-title">Recent activities</div></div>
+    <!-- Keep this ID: Supabase demo integration uses it -->
     <div id="activity" class="history-list">
       <div class="history-row">
-        <div class="history-icon">
-          <img alt="Логин" src="https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg" style="
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-  ">
-        </div>
-        <div class="history-info">
-          <strong>TikTok Pte. Ltd</strong>
-          <span>November 10, 2026</span>
-        </div>
+        <div class="history-icon"><img alt="Demo transaction icon" src="https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg"></div>
+        <div class="history-info"><strong>TikTok Pte. Ltd</strong><span>November 10, 2026</span><span class="history-status">Сompleted</span></div>
         <div class="history-amount negative">−$125.00</div>
       </div>
     </div>
+    
   </div>
-
-  
 </section>
-
 </main>
 </div>
 
 <nav class="mobile-nav">
-  <button class="mobile-tab" data-tab="Home">
-    <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>
-    Home
-  </button>
-  <button class="mobile-tab" data-tab="Pay">
-    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>
-    Pay
-  </button>
-  <button class="mobile-tab" data-tab="Get Paid">
-    <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>
-    Get Paid
-  </button>
-  <button class="mobile-tab active" data-tab="Me">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
-    Me
-  </button>
+  <button class="mobile-tab active" data-tab="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>Home</button>
+  <button class="mobile-tab" data-tab="Pay"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>Pay</button>
+  <button class="mobile-tab" data-tab="Get Paid"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>Get Paid</button>
+  <button class="mobile-tab" data-tab="Me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Me</button>
 </nav>
 
 <div class="modal-backdrop" id="demoModal">
   <div class="modal">
     <span class="demo-tag">DEMO PREVIEW</span>
     <h2 id="modalTitle">Demo tool</h2>
-    <p>
-      This feature is shown for interface demonstration only.
-      No real payment, invoice, or financial operation will be created.
-    </p>
+    <p>This feature is shown for interface demonstration only. No real payment, invoice, or financial operation will be created.</p>
     <div class="modal-actions">
       <button class="secondary-btn" id="closeModal">Close</button>
       <button class="primary-btn" id="modalOkay">Got it</button>
@@ -647,24 +492,15 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   const tabs = document.querySelectorAll('[data-tab]');
 
   function showView(name) {
-    views.forEach(view => {
-      view.classList.toggle('active', view.dataset.view === name);
-    });
-
-    tabs.forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.tab === name);
-    });
-
+    views.forEach(view => view.classList.toggle('active', view.dataset.view === name));
+    tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
     window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => showView(tab.dataset.tab));
-  });
-
-  document.querySelectorAll('[data-go]').forEach(button => {
-    button.addEventListener('click', () => showView(button.dataset.go));
-  });
+  tabs.forEach(tab => tab.addEventListener('click', () => showView(tab.dataset.tab)));
+  document.querySelectorAll('[data-go]').forEach(button =>
+    button.addEventListener('click', () => showView(button.dataset.go))
+  );
 
   const modal = document.getElementById('demoModal');
   const modalTitle = document.getElementById('modalTitle');
@@ -674,27 +510,50 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
     modal.classList.add('open');
   }
 
-  document.querySelectorAll('[data-modal]').forEach(button => {
-    button.addEventListener('click', () => openModal(button.dataset.modal));
-  });
-
-  document.getElementById('closeModal').addEventListener('click', () => {
-    modal.classList.remove('open');
-  });
-
-  document.getElementById('modalOkay').addEventListener('click', () => {
-    modal.classList.remove('open');
-  });
-
+  document.querySelectorAll('[data-modal]').forEach(button =>
+    button.addEventListener('click', () => openModal(button.dataset.modal))
+  );
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+  document.getElementById('modalOkay').addEventListener('click', () => modal.classList.remove('open'));
   modal.addEventListener('click', event => {
     if (event.target === modal) modal.classList.remove('open');
   });
+
+  // Keep an explicit simulated status on rows added by the Supabase demo integration.
+  const activity = document.getElementById('activity');
+  if (activity) {
+    const addDemoStatus = row => {
+      const info = row.querySelector('.history-info');
+      if (info && !info.querySelector('.history-status')) {
+        const status = document.createElement('span');
+        status.className = 'history-status';
+        status.textContent = 'Simulated transaction';
+        info.appendChild(status);
+      }
+    };
+    activity.querySelectorAll('.history-row').forEach(addDemoStatus);
+    new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(node => {
+      if (node.nodeType === 1) {
+        if (node.matches?.('.history-row')) addDemoStatus(node);
+        node.querySelectorAll?.('.history-row').forEach(addDemoStatus);
+      }
+    }))).observe(activity, {childList:true, subtree:true});
+  }
+
+  const toggleBalance = document.getElementById('toggleBalance');
+  const balance = document.getElementById('balance');
+  if (toggleBalance && balance) {
+    let visible = true;
+    toggleBalance.addEventListener('click', () => {
+      visible = !visible;
+      balance.textContent = visible ? '$24,580.00' : '••••••••';
+    });
+  }
 })();
 </script>
 
-<!-- Supabase demo integration: keep this file unchanged -->
+<!-- Demo integration placeholder. Keep only if this file exists in your project. -->
 <script src="/supabase-bank-demo.js"></script>
-
 
 
 </body></html>
