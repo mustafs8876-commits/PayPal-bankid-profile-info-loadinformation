@@ -273,7 +273,10 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 }
 .history-status { display: none !important; }html, body { max-width: 100%; overflow-x: hidden; }
 [data-view="Home"] .quick-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 8px !important; }
-@media (max-width: 600px) {
+@media (max-width: 600px) {  
+  div:has(> .demo-bank-card) { display: flex !important; overflow-x: auto !important; gap: 12px !important; padding-bottom: 4px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  div:has(> .demo-bank-card)::-webkit-scrollbar { display: none; }
+
   .profile-card { padding: 16px 14px !important; gap: 10px !important; padding-right: 105px !important; }
   .profile-card > span { top: 14px !important; right: 12px !important; padding: 2px 7px !important; font-size: 10px !important; }
   .profile-name { font-size: 14px !important; line-height: 1.2 !important; }
