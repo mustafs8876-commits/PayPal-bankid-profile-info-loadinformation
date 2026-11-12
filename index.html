@@ -463,7 +463,7 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 
 </section>
 
-<section class="view" data-view="Me">
+<section class="view active" data-view="Me">
   <div class="page-head">
     <h1>Me</h1>
   </div>
@@ -533,16 +533,13 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 </nav>
 
 <div class="modal-backdrop" id="demoModal">
-  <div class="modal" style="max-width: 420px; width: 92%;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-      <span style="display: inline-flex; align-items: center; gap: 6px; color: #0870e8; background: #edf4ff; border-radius: 6px; padding: 4px 9px; font-size: 10px; font-weight: 800; letter-spacing: .6px;">PAYPAL BUSINESS</span>
-      <button id="closeModalX" style="border: 0; background: transparent; color: #8491a3; font-size: 20px; line-height: 1; padding: 4px;">×</button>
-    </div>
-    <h2 id="modalTitle" style="margin: 0 0 12px; font-size: 20px;">Service</h2>
-    <div id="modalBody" style="font-size: 13px; color: #4a5568; line-height: 1.5;"></div>
-    <div class="modal-actions" id="modalActions" style="margin-top: 18px;">
-      <button class="secondary-btn" id="closeModal">Cancel</button>
-      <button class="primary-btn" id="modalOkay">Confirm</button>
+  <div class="modal">
+    <span class="demo-tag">DEMO PREVIEW</span>
+    <h2 id="modalTitle">Demo tool</h2>
+    <p>This feature is shown for interface demonstration only. No real payment, invoice, or financial operation will be created.</p>
+    <div class="modal-actions">
+      <button class="secondary-btn" id="closeModal">Close</button>
+      <button class="primary-btn" id="modalOkay">Got it</button>
     </div>
   </div>
 </div>
@@ -555,7 +552,7 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   function showView(name) {
     views.forEach(view => view.classList.toggle('active', view.dataset.view === name));
     tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
   tabs.forEach(tab => tab.addEventListener('click', () => showView(tab.dataset.tab)));
@@ -565,130 +562,56 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 
   const modal = document.getElementById('demoModal');
   const modalTitle = document.getElementById('modalTitle');
-  const modalBody = document.getElementById('modalBody');
-  const modalActions = document.getElementById('modalActions');
 
-  const inputStyle = 'width:100%;padding:10px 12px;border:1px solid #dce3eb;border-radius:8px;font-size:13px;margin-top:5px;margin-bottom:12px;outline:none;';
-  const labelStyle = 'display:block;font-size:12px;font-weight:700;color:#334760;';
-
-  function setButtons(cancelText, confirmText, onConfirm) {
-    modalActions.innerHTML = `
-      <button class="secondary-btn" id="closeModal">${cancelText}</button>
-      <button class="primary-btn" id="modalOkay">${confirmText}</button>
-    `;
-    document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
-    document.getElementById('modalOkay').addEventListener('click', onConfirm);
+  function openModal(title) {
+    modalTitle.textContent = title;
+    modal.classList.add('open');
   }
 
-  function showSuccess(message) {
-    modalBody.innerHTML = `
-      <div style="text-align:center;padding:16px 0;">
-        <div style="width:42px;height:42px;border-radius:50%;background:#dcfce7;color:#166534;display:grid;place-items:center;margin:0 auto 10px;font-size:20px;font-weight:800;">✓</div>
-        <strong style="display:block;font-size:15px;color:#172b4d;margin-bottom:4px;">Completed</strong>
-        <span style="font-size:12px;color:#718096;">${message}</span>
-      </div>
-    `;
-    modalActions.innerHTML = `<button class="primary-btn" style="width:100%;" id="modalDone">Done</button>`;
-    document.getElementById('modalDone').addEventListener('click', () => modal.classList.remove('open'));
+  document.querySelectorAll('[data-modal]').forEach(button =>
+    button.addEventListener('click', () => openModal(button.dataset.modal))
+  );
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('open'));
+  document.getElementById('modalOkay').addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', event => {
+    if (event.target === modal) modal.classList.remove('open');
+  });
+
+  // Keep an explicit simulated status on rows added by the Supabase demo integration.
+  const activity = document.getElementById('activity');
+  if (activity) {
+    const addDemoStatus = row => {
+      const info = row.querySelector('.history-info');
+      if (info && !info.querySelector('.history-status')) {
+        const status = document.createElement('span');
+        status.className = 'history-status';
+        status.textContent = 'Completed';
+        info.appendChild(status);
+      }
+    };
+    activity.querySelectorAll('.history-row').forEach(addDemoStatus);
+    new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(node => {
+      if (node.nodeType === 1) {
+        if (node.matches?.('.history-row')) addDemoStatus(node);
+        node.querySelectorAll?.('.history-row').forEach(addDemoStatus);
+      }
+    }))).observe(activity, {childList:true, subtree:true});
   }
 
-  function renderModalContent(title) {
-    const key = title.toLowerCase();
+  const toggleBalance = document.getElementById('toggleBalance');
+  const balance = document.getElementById('balance');
+  if (toggleBalance && balance) {
+    let visible = true;
+    toggleBalance.addEventListener('click', () => {
+      visible = !visible;
+      balance.textContent = visible ? '$24,580.00' : '••••••••';
+    });
+  }
+})();
+</script>
 
-    if (key.includes('qr')) {
-      modalBody.innerHTML = `
-        <div style="text-align:center;padding:12px 0;">
-          <div style="display:inline-block;padding:14px;background:#fff;border:1px solid #e6ebf1;border-radius:14px;">
-            <svg width="150" height="150" viewBox="0 0 100 100" fill="#142c4d">
-              <rect x="10" y="10" width="25" height="25" rx="3" fill="none" stroke="#142c4d" stroke-width="6"/>
-              <rect x="17" y="17" width="11" height="11"/>
-              <rect x="65" y="10" width="25" height="25" rx="3" fill="none" stroke="#142c4d" stroke-width="6"/>
-              <rect x="72" y="17" width="11" height="11"/>
-              <rect x="10" y="65" width="25" height="25" rx="3" fill="none" stroke="#142c4d" stroke-width="6"/>
-              <rect x="17" y="72" width="11" height="11"/>
-              <rect x="45" y="12" width="8" height="8"/><rect x="45" y="28" width="8" height="16"/>
-              <rect x="12" y="45" width="16" height="8"/><rect x="36" y="45" width="12" height="8"/>
-              <rect x="56" y="45" width="8" height="16"/><rect x="72" y="45" width="16" height="8"/>
-              <rect x="45" y="65" width="12" height="8"/><rect x="65" y="65" width="8" height="16"/>
-              <rect x="80" y="72" width="10" height="18"/><rect x="45" y="82" width="16" height="8"/>
-            </svg>
-          </div>
-          <div style="font-weight:750;font-size:15px;color:#172b4d;margin-top:12px;">Hsein Can Mansour</div>
-          <div style="font-size:12px;color:#718096;">@HuseinCan • Instant QR Checkout</div>
-        </div>
-      `;
-      setButtons('Close', 'Copy QR Link', () => {
-        navigator.clipboard?.writeText('https://paypal.me');
-        showSuccess('Payment QR link copied to clipboard.');
-      });
-    } else if (key.includes('link')) {
-      modalBody.innerHTML = `
-        <label style="${labelStyle}">Amount (USD)</label>
-        <input type="number" id="linkAmount" placeholder="0.00" value="150.00" style="${inputStyle}">
-        <label style="${labelStyle}">Your PayPal.Me Link</label>
-        <input type="text" id="generatedLink" readonly value="https://paypal.me/150.00" style="${inputStyle}background:#f5f7fa;color:#0870e8;font-weight:600;">
-      `;
-      const amt = document.getElementById('linkAmount');
-      const lnk = document.getElementById('generatedLink');
-      amt.addEventListener('input', () => {
-        lnk.value = 'https://paypal.me/' + (amt.value || '0.00');
-      });
-      setButtons('Close', 'Copy Link', () => {
-        navigator.clipboard?.writeText(lnk.value);
-        showSuccess('Payment link copied and ready to share.');
-      });
-    } else if (key.includes('invoice')) {
-      modalBody.innerHTML = `
-        <label style="${labelStyle}">Customer Email</label>
-        <input type="email" placeholder="client@company.com" style="${inputStyle}">
-        <label style="${labelStyle}">Invoice Amount (USD)</label>
-        <input type="number" placeholder="0.00" style="${inputStyle}">
-        <label style="${labelStyle}">Description / Service</label>
-        <input type="text" placeholder="Digital marketing & consulting" style="${inputStyle}">
-      `;
-      setButtons('Cancel', 'Send Invoice', () => showSuccess('Invoice #INV-2049 has been sent to the customer.'));
-    } else if (key.includes('send') || key.includes('bill')) {
-      modalBody.innerHTML = `
-        <label style="${labelStyle}">Recipient (@username, email, or biller)</label>
-        <input type="text" placeholder="name@example.com" style="${inputStyle}">
-        <label style="${labelStyle}">Amount (USD)</label>
-        <input type="number" placeholder="0.00" style="${inputStyle}">
-        <label style="${labelStyle}">Funding Source</label>
-        <select style="${inputStyle}background:#fff;">
-          <option>PayPal Balance (Available)</option>
-          <option>Visa Payment Card •••• 0743</option>
-          <option>Mastercard Virtual •••• 1906</option>
-        </select>
-      `;
-      setButtons('Cancel', 'Send Now', () => showSuccess('Transfer request has been queued for instant processing.'));
-    } else if (key.includes('payment methods')) {
-      modalBody.innerHTML = `
-        <div style="display:grid;gap:10px;">
-          <div style="padding:12px;border:1px solid #e6ebf1;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
-            <div><strong style="display:block;color:#172b4d;">Visa Business Debit •••• 0743</strong><span style="font-size:11px;color:#718096;">Expires 08/29 • Primary</span></div>
-            <span style="color:#168653;font-size:11px;font-weight:700;">Active</span>
-          </div>
-          <div style="padding:12px;border:1px solid #e6ebf1;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
-            <div><strong style="display:block;color:#172b4d;">Mastercard Virtual •••• 1906</strong><span style="font-size:11px;color:#718096;">Expires 11/28 • Online</span></div>
-            <span style="color:#168653;font-size:11px;font-weight:700;">Active</span>
-          </div>
-        </div>
-      `;
-      setButtons('Close', 'Done', () => modal.classList.remove('open'));
-    } else if (key.includes('settings') || key.includes('account')) {
-      modalBody.innerHTML = `
-        <div style="display:grid;gap:8px;background:#f5f7fa;padding:12px;border-radius:10px;font-size:12px;">
-          <div style="display:flex;justify-content:space-between;"><span style="color:#718096;">Legal Name</span><strong>Hsein Can Mansour</strong></div>
-          <div style="display:flex;justify-content:space-between;"><span style="color:#718096;">Merchant ID</span><strong>PP-894210583</strong></div>
-          <div style="display:flex;justify-content:space-between;"><span style="color:#718096;">Account Status</span><strong style="color:#168653;">Verified Business</strong></div>
-          <div style="display:flex;justify-content:space-between;"><span style="color:#718096;">2FA Security</span><strong>Enabled (App)</strong></div>
-        </div>
-      `;
-      setButtons('Close', 'Save', () => modal.classList.remove('open'));
-    } else if (key.includes('products') || key.includes('customers') || key.includes('reports')) {
-      modalBody.innerHTML = `
-        <div style="background:#f5f7fa;padding:14px;border-radius:10px;text-align:center;">
-          <strong style="display:block;color:#172b4d;font-size:14px;margin-bottom:4px;">${title} Synced</strong>
-          <span style="font-size:12px;color:#718096;">All records are up to date with your merchant ledger.</span>
-        </div>
-      `;
+<!-- Demo integration placeholder. Keep only if this file exists in your project. -->
+<script src="/supabase-bank-demo.js"></script>
+
+
+</body></html>
