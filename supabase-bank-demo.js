@@ -145,12 +145,12 @@ function createTransactionRow(tx) {
   const parsedDate = new Date(tx.transaction_date);
 
   date.textContent = Number.isNaN(parsedDate.getTime())
-    ? 'DEMO'
-    : new Intl.DateTimeFormat('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-      }).format(parsedDate) + ' · DEMO';
+  ? 'Date unavailable'
+  : new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }).format(parsedDate);
 
   info.append(title, date);
 
