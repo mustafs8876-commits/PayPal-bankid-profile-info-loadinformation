@@ -347,14 +347,21 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   }, 1100);
 
   // Проверка пароля
-  const REQUIRED_PASS = 'DMHTRK07890.@#'; // Задайте свой пароль здесь
+    // Проверка пароля с запоминанием сессии
+  const REQUIRED_PASS = 'ВАШ_ПАРОЛЬ'; // Впишите сюда ваш пароль
   const gate = document.getElementById('loginGate');
   const passInput = document.getElementById('gatePass');
   const errBox = document.getElementById('gateErr');
   const btn = document.getElementById('gateSubmit');
 
+  // Если пользователь уже вводил верный пароль ранее — сразу убираем окно входа
+  if (localStorage.getItem('pp_auth_ok') === '1' && gate) {
+    gate.remove();
+  }
+
   function unlock() {
     if (passInput.value === REQUIRED_PASS) {
+      localStorage.setItem('pp_auth_ok', '1');
       gate.style.opacity = '0';
       setTimeout(() => gate.remove(), 350);
     } else {
@@ -363,9 +370,13 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
     }
   }
 
-  btn.addEventListener('click', unlock);
-  passInput.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+  if (btn && passInput) {
+    btn.addEventListener('click', unlock);
+    passInput.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+  }
 })();
+</script>
+
 </script>
 
   <div style="width:140px;height:4px;background:#edf2f7;border-radius:99px;overflow:hidden;">
