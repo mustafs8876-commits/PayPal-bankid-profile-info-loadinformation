@@ -294,6 +294,32 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 </head>
 
 <body>
+<div id="appSplash" style="position:fixed;inset:0;background:#ffffff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .45s ease,visibility .45s ease;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
+    <img src="https://pinimg.com" style="width:40px;height:40px;border-radius:50%;object-fit:contain;display:none;" onload="this.style.display='block'">
+    <div style="font-size:34px;font-weight:800;letter-spacing:-1.2px;line-height:1;">
+      <span style="color:#0870e8;">Pay</span><span style="color:#172b4d;">Pal</span>
+    </div>
+  </div>
+  <div style="width:140px;height:4px;background:#edf2f7;border-radius:99px;overflow:hidden;">
+    <div id="splashBar" style="width:0%;height:100%;background:#0870e8;border-radius:99px;transition:width .9s cubic-bezier(.4,0,.2,1);"></div>
+  </div>
+  <div style="font-size:11px;color:#8491a3;font-weight:600;margin-top:12px;letter-spacing:.3px;">Securing business session...</div>
+</div>
+<script>
+  requestAnimationFrame(() => {
+    const bar = document.getElementById('splashBar');
+    if (bar) bar.style.width = '100%';
+  });
+  setTimeout(() => {
+    const splash = document.getElementById('appSplash');
+    if (splash) {
+      splash.style.opacity = '0';
+      splash.style.visibility = 'hidden';
+      setTimeout(() => splash.remove(), 500);
+    }
+  }, 1100);
+</script>
 
 
 <header class="topbar">
