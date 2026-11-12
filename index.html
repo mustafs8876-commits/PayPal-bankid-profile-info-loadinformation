@@ -2,7 +2,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffffff">
-<title>PayPal-style Demo Dashboard</title>
+<span style="display: inline-block; margin-left: 8px; padding: 2px 8px; background: #dcfce7; color: #166534; border-radius: 99px; font-size: 11px; font-weight: 500;">Verified Business</span>
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -292,7 +293,7 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 <div class="layout">
 <aside class="sidebar">
   <div class="side-label">Business Menu</div>
-  <button class="nav-item active" data-tab="Home">
+  <button class="nav-item" data-tab="Home">
     <svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>Home
   </button>
   <button class="nav-item" data-tab="Pay">
@@ -301,14 +302,14 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   <button class="nav-item" data-tab="Get Paid">
     <svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>Get Paid
   </button>
-  <button class="nav-item" data-tab="Me">
+  <button class="nav-item active" data-tab="Me">
     <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Me
   </button>
   <div class="sidebar-note">Independent demonstration interface. All displayed balances, merchants and transactions are simulated.</div>
 </aside>
 
-<main>
-<section class="view active" data-view="Home">
+<main style="padding-bottom: 90px;">
+<section class="view" data-view="Home">
   <div class="page-heading"><div><h1>Business Overview</h1></div></div>
   <div class="balance-card">
     <div class="balance-top"><span class="eyebrow">Available balance</span></div>
@@ -423,22 +424,53 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 <section class="view" data-view="Get Paid">
   <div class="page-heading"><div><h1>Get Paid</h1></div></div>
   <div class="quick-grid">
-    <button class="tool-card" data-modal="Create invoice"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l3 3v15H4V3zM8 11h8M8 15h5"></path></svg></span><div class="tool-title">Create invoice</div><div class="tool-desc">Invoice creation</div></button>
-    <button class="tool-card" data-modal="Payment links"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1"></path></svg></span><div class="tool-title">Payment links</div></button>
-    <button class="tool-card" data-modal="QR code"><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span><div class="tool-title">QR code</div><div class="tool-desc">QR payment </div></button>
-    <button class="tool-card" data-modal="Products"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9"></path></svg></span><div class="tool-title">Products</div></button>
-    <button class="tool-card" data-modal="Customers"><span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"></circle><path d="M2 21a7 7 0 0 1 14 0M17 8h5M19.5 5.5v5"></path></svg></span><div class="tool-title">Customers</div></button>
-    <button class="tool-card" data-modal="Sales reports"><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 15l4-4 3 2 5-6"></path></svg></span><div class="tool-title">Sales reports</div></button>
-  </div>
+  <button class="tool-card" data-modal="Create invoice">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span>
+    <div class="tool-title">Create invoice</div>
+    <div class="tool-desc">Invoice creation</div>
+  </button>
+
+  <button class="tool-card" data-modal="Payment links">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></span>
+    <div class="tool-title">Payment links</div>
+    <div class="tool-desc">Share payment link</div>
+  </button>
+
+  <button class="tool-card" data-modal="QR code">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><path d="M14 14h3v3h-3zM20 14v2M17 20h4"></path></svg></span>
+    <div class="tool-title">QR code</div>
+    <div class="tool-desc">QR payment</div>
+  </button>
+
+  <button class="tool-card" data-modal="Products">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></span>
+    <div class="tool-title">Products</div>
+    <div class="tool-desc">Manage catalog</div>
+  </button>
+
+  <button class="tool-card" data-modal="Customers">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg></span>
+    <div class="tool-title">Customers</div>
+    <div class="tool-desc">Client directory</div>
+  </button>
+
+  <button class="tool-card" data-modal="Sales reports">
+    <span class="tool-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+    <div class="tool-title">Sales reports</div>
+    <div class="tool-desc">Analytics &amp; tax</div>
+  </button>
+</div>
+
 </section>
 
-<section class="view" data-view="Me">
+<section class="view active" data-view="Me">
   <div class="page-heading"><div><h1>Me</h1></div></div>
   <div class="panel profile-card">
     <div class="avatar-large"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1_14XjBhDoBIqKiR-0QDusZnXy3jJV5_DLHv7H3r41jSSb8B8nyLLaTOb&amp;s=10" alt="Demo profile"></div>
     <div>
       <div class="profile-name">Hsein Can Mansour <span aria-label="demo badge" style="color:#1877f2"></span></div>
-      <div class="profile-caption">@HuseinCan</div>
+      <div class="profile-caption">@HuseinCan <span style="display: inline-block; margin-left: 8px; padding: 2px 8px; background: #dcfce7; color: #166534; border-radius: 99px; font-size: 11px; font-weight: 500;">Verified Business</span></div>
+
     </div>
   </div>
 
@@ -461,17 +493,21 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
         <div class="history-amount negative">−$125.00</div>
       </div>
     </div>
-    
+    <div style="text-align: center; font-size: 11px; color: #94a3b8; margin-top: 24px; line-height: 1.5;">
+  PayPal Pte. Ltd. • Licensed Payment Institution<br>
+  256-bit SSL Encrypted Connection
+</div>
+
   </div>
 </section>
 </main>
 </div>
 
 <nav class="mobile-nav">
-  <button class="mobile-tab active" data-tab="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>Home</button>
+  <button class="mobile-tab" data-tab="Home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path></svg>Home</button>
   <button class="mobile-tab" data-tab="Pay"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M7 15h4"></path></svg>Pay</button>
   <button class="mobile-tab" data-tab="Get Paid"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.7-2.2-3-5-3s-5 1.3-5 3 2.2 3 5 3 5 1.3 5 3-2.2 3-5 3-5-1.3-5-3"></path></svg>Get Paid</button>
-  <button class="mobile-tab" data-tab="Me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Me</button>
+  <button class="mobile-tab active" data-tab="Me"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Me</button>
 </nav>
 
 <div class="modal-backdrop" id="demoModal">
