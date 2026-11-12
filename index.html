@@ -292,15 +292,78 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 
 </style>
 </head>
-
 <body>
+<!-- 1. Экран загрузки (Splash Screen) -->
 <div id="appSplash" style="position:fixed;inset:0;background:#ffffff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .45s ease,visibility .45s ease;">
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968365.png" style="width:40px;height:40px;border-radius:50%;object-fit:contain;display:none;" onload="this.style.display='block'">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968365.png" style="width:40px;height:40px;object-fit:contain;">
     <div style="font-size:34px;font-weight:800;letter-spacing:-1.2px;line-height:1;">
       <span style="color:#0870e8;">Pay</span><span style="color:#172b4d;">Pal</span>
     </div>
   </div>
+  <div style="width:140px;height:4px;background:#edf2f7;border-radius:99px;overflow:hidden;">
+    <div id="splashBar" style="width:0%;height:100%;background:#0870e8;border-radius:99px;transition:width .9s cubic-bezier(.4,0,.2,1);"></div>
+  </div>
+  <div style="font-size:11px;color:#8491a3;font-weight:600;margin-top:12px;letter-spacing:.3px;">Securing business session...</div>
+</div>
+
+<!-- 2. Экран входа с паролем (Login Gate) -->
+<div id="loginGate" style="position:fixed;inset:0;background:#f5f7fa;z-index:9990;display:flex;align-items:center;justify-content:center;padding:20px;transition:opacity .35s ease;">
+  <div style="width:100%;max-width:380px;background:#ffffff;border:1px solid #e6ebf1;border-radius:16px;padding:28px 24px;box-shadow:0 10px 30px rgba(20,44,77,.08);text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968365.png" style="width:30px;height:30px;object-fit:contain;">
+      <span style="font-size:24px;font-weight:800;letter-spacing:-0.8px;"><span style="color:#0870e8;">Pay</span><span style="color:#172b4d;">Pal</span></span>
+    </div>
+    <h2 style="margin:0 0 6px;font-size:20px;font-weight:750;color:#172b4d;">Log in to Business</h2>
+    <p style="margin:0 0 20px;font-size:13px;color:#718096;">Enter your security password to access your account</p>
+
+    <input type="email" value="hsein.mansour@paypal-business.com" readonly style="width:100%;padding:12px 14px;border:1px solid #dce3eb;border-radius:10px;font-size:14px;color:#172b4d;background:#f8fafc;margin-bottom:12px;outline:none;">
+    <input type="password" id="gatePass" placeholder="Password" style="width:100%;padding:12px 14px;border:1px solid #dce3eb;border-radius:10px;font-size:14px;color:#172b4d;margin-bottom:8px;outline:none;">
+    <div id="gateErr" style="color:#dc2626;font-size:12px;text-align:left;margin-bottom:12px;display:none;">Incorrect password. Try again.</div>
+
+    <button id="gateSubmit" type="button" style="width:100%;padding:12px;border:0;border-radius:99px;background:#0870e8;color:#ffffff;font-size:15px;font-weight:700;margin-top:4px;">Log In</button>
+    <div style="font-size:11px;color:#94a3b8;margin-top:16px;">Protected by 256-bit SSL &amp; 2FA</div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // Анимация и скрытие заставки
+  requestAnimationFrame(() => {
+    const bar = document.getElementById('splashBar');
+    if (bar) bar.style.width = '100%';
+  });
+  setTimeout(() => {
+    const splash = document.getElementById('appSplash');
+    if (splash) {
+      splash.style.opacity = '0';
+      splash.style.visibility = 'hidden';
+      setTimeout(() => splash.remove(), 500);
+    }
+  }, 1100);
+
+  // Проверка пароля
+  const REQUIRED_PASS = '123456'; // Задайте свой пароль здесь
+  const gate = document.getElementById('loginGate');
+  const passInput = document.getElementById('gatePass');
+  const errBox = document.getElementById('gateErr');
+  const btn = document.getElementById('gateSubmit');
+
+  function unlock() {
+    if (passInput.value === REQUIRED_PASS) {
+      gate.style.opacity = '0';
+      setTimeout(() => gate.remove(), 350);
+    } else {
+      errBox.style.display = 'block';
+      passInput.style.borderColor = '#dc2626';
+    }
+  }
+
+  btn.addEventListener('click', unlock);
+  passInput.addEventListener('keydown', e => { if (e.key === 'Enter') unlock(); });
+})();
+</script>
+
   <div style="width:140px;height:4px;background:#edf2f7;border-radius:99px;overflow:hidden;">
     <div id="splashBar" style="width:0%;height:100%;background:#0870e8;border-radius:99px;transition:width .9s cubic-bezier(.4,0,.2,1);"></div>
   </div>
