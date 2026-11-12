@@ -276,7 +276,8 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
 @media (max-width: 600px) {  
    div:has(> .demo-bank-card) { display: flex !important; overflow-x: auto !important; gap: 14px !important; scroll-snap-type: x mandatory !important; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   div:has(> .demo-bank-card)::-webkit-scrollbar { display: none; }
-  .demo-bank-card { flex: 0 0 100% !important; width: 100% !important; min-width: 100% !important; aspect-ratio: 1.586 / 1; scroll-snap-align: center !important; scroll-snap-stop: always; }
+  .demo-bank-card { flex: 0 0 100% !important; width: 100% !important; min-width: 100% !important; height: auto !important; padding: 20px !important; scroll-snap-align: center !important; scroll-snap-stop: always; }
+
   .demo-card-number { white-space: nowrap !important; font-size: 16px !important; }
 
 
