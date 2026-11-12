@@ -124,7 +124,7 @@ function createTransactionRow(tx) {
 
   const img = document.createElement('img');
   img.src = 'https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg';
-  img.alt = 'DEMO transaction';
+  img.alt = 'Transaction';
   img.style.cssText = `
     width:90%;
     height:90%;
@@ -138,7 +138,7 @@ function createTransactionRow(tx) {
   info.className = 'history-info';
 
   const title = document.createElement('strong');
-  title.textContent = 'TikTok Pte. Ltd · DEMO';
+  title.textContent = 'TikTok Pte. Ltd';
 
   const date = document.createElement('span');
   const parsedDate = new Date(tx.transaction_date);
@@ -149,7 +149,7 @@ function createTransactionRow(tx) {
         month: 'long',
         day: 'numeric',
         year: 'numeric'
-      }).format(parsedDate) + ' · DEMO';
+      }).format(parsedDate) + '';
 
   info.append(title, date);
 
@@ -178,7 +178,7 @@ function createTransactionRow(tx) {
       const { data, error } = await client
         .from('demo_transactions')
         .select('id,amount,currency,transaction_date')
-        .eq('status', 'DEMO')
+        .eq('status', '')
         .eq('currency', 'USD')
         .order('transaction_date', { ascending: false })
         .range(offset, offset + pageSize - 1);
