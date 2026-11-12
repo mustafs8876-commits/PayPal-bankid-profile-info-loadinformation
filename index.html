@@ -362,6 +362,15 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   const passInput = document.getElementById('gatePass');
   const errBox = document.getElementById('gateErr');
   const btn = document.getElementById('gateSubmit');
+    const toggleBtn = document.getElementById('toggleGatePass');
+  if (toggleBtn && passInput) {
+    toggleBtn.addEventListener('click', () => {
+      const isHidden = passInput.type === 'password';
+      passInput.type = isHidden ? 'text' : 'password';
+      toggleBtn.style.color = isHidden ? '#0870e8' : '#718096';
+    });
+  }
+
 
   // Если пользователь уже вводил верный пароль ранее — сразу убираем окно входа
   if (localStorage.getItem('pp_auth_ok') === '1' && gate) {
