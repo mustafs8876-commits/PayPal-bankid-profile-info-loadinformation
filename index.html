@@ -277,7 +277,12 @@ h1{font-size:28px;letter-spacing:-.45px;margin:0;font-weight:750}
   .profile-card { padding: 16px 14px !important; gap: 10px !important; padding-right: 105px !important; }
   .profile-card > span { top: 14px !important; right: 12px !important; padding: 2px 7px !important; font-size: 10px !important; }
   .profile-name { font-size: 14px !important; line-height: 1.2 !important; }
-  .avatar-large { width: 42px !important; height: 42px !important; flex-shrink: 0 !important; }
+  .avatar-large { width: 42px !important; height: 42px !important; flex-shrink: 0 !important;
+                  .cards-grid, .cards-row { display: flex !important; overflow-x: auto !important; gap: 12px !important; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .cards-grid::-webkit-scrollbar, .cards-row::-webkit-scrollbar { display: none; }
+  .demo-bank-card { flex: 0 0 84% !important; min-width: 265px !important; aspect-ratio: 1.586 / 1; scroll-snap-align: start; }
+  .demo-card-number { white-space: nowrap !important; font-size: 15px !important; }
+}
 }
 
 
