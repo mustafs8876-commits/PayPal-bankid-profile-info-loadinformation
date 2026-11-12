@@ -112,32 +112,62 @@
     return icon;
   }
 
-  function createTransactionRow(tx) {
-    const row = document.createElement('div');
-    row.className = 'transaction supabase-demo-row';
+  
+function createTransactionRow(tx) {
+  const row = document.createElement('div');
+  row.className = 'history-row supabase-demo-row';
 
-    const icon = createTikTokIcon();
+  const icon = document.createElement('div');
+  icon.className = 'history-icon';
+  icon.style.background = '#050505';
+  icon.style.overflow = 'hidden';
 
-    const main = document.createElement('div');
-    main.className = 'tx-main';
+  const img = document.createElement('img');
+  img.src = 'https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg';
+  img.alt = 'DEMO transaction';
+  img.style.cssText = `
+    width:90%;
+    height:90%;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+  `;
+  icon.appendChild(img);
 
-    const title = document.createElement('div');
-    title.className = 'tx-title';
-    title.textContent = 'TikTok Coins · DEMO';
+  const info = document.createElement('div');
+  info.className = 'history-info';
 
-    const date = document.createElement('div');
-    date.className = 'tx-date';
-    date.textContent = formatDate(tx.transaction_date);
+  const title = document.createElement('strong');
+  title.textContent = 'TikTok Pte. Ltd · DEMO';
 
-    const amount = document.createElement('div');
-    amount.className = 'tx-amount negative';
-    amount.textContent = formatAmount(tx.amount);
+  const date = document.createElement('span');
+  const parsedDate = new Date(tx.transaction_date);
 
-    main.append(title, date);
-    row.append(icon, main, amount);
+  date.textContent = Number.isNaN(parsedDate.getTime())
+    ? 'DEMO'
+    : new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(parsedDate) + ' · DEMO';
 
-    return row;
-  }
+  info.append(title, date);
+
+  const amount = document.createElement('div');
+  amount.className = 'history-amount negative';
+
+  const value = Number(tx.amount);
+  amount.textContent = Number.isFinite(value)
+    ? '−' + new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: tx.currency || 'USD'
+      }).format(value)
+    : '—';
+
+  row.append(icon, info, amount);
+
+  return row;
+}
 
   async function fetchAllDemoTransactions() {
     const allTransactions = [];
