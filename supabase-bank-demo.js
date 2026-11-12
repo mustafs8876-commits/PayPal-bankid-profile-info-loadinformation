@@ -113,6 +113,7 @@
   }
 
   
+
 function createTransactionRow(tx) {
   const row = document.createElement('div');
   row.className = 'history-row supabase-demo-row';
@@ -124,7 +125,7 @@ function createTransactionRow(tx) {
 
   const img = document.createElement('img');
   img.src = 'https://i.pinimg.com/736x/d9/48/9a/d9489a937924f4b57fef14dfac8bd807.jpg';
-  img.alt = 'Transaction';
+  img.alt = 'TikTok';
   img.style.cssText = `
     width:90%;
     height:90%;
@@ -149,7 +150,7 @@ function createTransactionRow(tx) {
         month: 'long',
         day: 'numeric',
         year: 'numeric'
-      }).format(parsedDate) + '';
+      }).format(parsedDate) + ' · DEMO';
 
   info.append(title, date);
 
@@ -169,6 +170,7 @@ function createTransactionRow(tx) {
   return row;
 }
 
+
   async function fetchAllDemoTransactions() {
     const allTransactions = [];
     const pageSize = 1000;
@@ -178,7 +180,7 @@ function createTransactionRow(tx) {
       const { data, error } = await client
         .from('demo_transactions')
         .select('id,amount,currency,transaction_date')
-        .eq('status', '')
+        .eq('status', 'DEMO')
         .eq('currency', 'USD')
         .order('transaction_date', { ascending: false })
         .range(offset, offset + pageSize - 1);
