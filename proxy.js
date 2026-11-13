@@ -37,7 +37,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok){error.textContent=data.error==='rate_limited'?'Too many attempts. Try later.':data.error==='auth_not_configured'?'Access is not configured yet.':'Invalid key.';key.value='';}
   else{location.replace('/');}}
   catch{error.textContent='Could not verify access. Try again.';}finally{button.disabled=false;}});
-  </script></body></html>;
+  </script></body></html>`;
 }
 
 export default function proxy(request) {
