@@ -1,5 +1,5 @@
 const { next } = require('@vercel/functions');
-import { createHmac, timingSafeEqual } from 'node:crypto';
+const { createHmac, timingSafeEqual } = require('node:crypto');
 
 function validSession(token, secret) {
   if (!token || !secret) return false;
@@ -62,7 +62,7 @@ function loginPage() {
 </script></body></html>`;
 }
 
-export default function proxy(request) {
+function proxy(request) {
   const url = new URL(request.url);
   if (url.pathname === '/api/auth') {
     return next();
@@ -79,7 +79,7 @@ export default function proxy(request) {
 
   const cookieHeader = request.headers.get('cookie') || '';
   const match = cookieHeader.match(/(?:^|;\s*)site_access=([^;]+)/);
-  if (match && validSession(match, secret)) {
+  if (match && validSession(match[1], secret)) {
     return next();
   }
 
@@ -93,4 +93,5 @@ export default function proxy(request) {
   });
 }
 
-export const config = { runtime: 'nodejs' };
+module.exports = proxy;
+module.exports.config = { runtime: 'nodejs' };
