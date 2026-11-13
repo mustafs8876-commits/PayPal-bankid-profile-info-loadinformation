@@ -1,4 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "proxy": {
+    "entrypoint": "proxy.mjs",
+    "matcher": [
+      "/((?!api/auth).*)"
+    ]
+  }
 }
