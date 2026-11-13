@@ -1,4 +1,4 @@
-\import { next } from '@vercel/functions';
+const { next } from '@vercel/functions';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 function validSession(token, secret) {
